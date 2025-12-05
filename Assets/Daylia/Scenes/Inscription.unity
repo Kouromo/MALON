@@ -799,6 +799,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1819987585}
     m_Modifications:
+    - target: {fileID: 1921413472026171466, guid: 3fc942e97f6f0f5469c8fa4e20d6c01e, type: 3}
+      propertyPath: m_text
+      value: '  Mode bleu'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2988717914991976531, guid: 3fc942e97f6f0f5469c8fa4e20d6c01e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4258560163109086978, guid: 3fc942e97f6f0f5469c8fa4e20d6c01e, type: 3}
       propertyPath: m_Name
       value: Menu
@@ -1863,6 +1871,14 @@ PrefabInstance:
     - target: {fileID: 816675472274226426, guid: 3fc942e97f6f0f5469c8fa4e20d6c01e, type: 3}
       propertyPath: m_Color.r
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1921413472026171466, guid: 3fc942e97f6f0f5469c8fa4e20d6c01e, type: 3}
+      propertyPath: m_text
+      value: '  Mode sombre'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1921413472026171466, guid: 3fc942e97f6f0f5469c8fa4e20d6c01e, type: 3}
+      propertyPath: m_margin.z
+      value: -13.738235
       objectReference: {fileID: 0}
     - target: {fileID: 1921413472026171466, guid: 3fc942e97f6f0f5469c8fa4e20d6c01e, type: 3}
       propertyPath: m_fontColor.b

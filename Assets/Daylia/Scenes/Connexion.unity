@@ -998,7 +998,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1338441893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1205,6 +1205,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1921413472026171466, guid: 3fc942e97f6f0f5469c8fa4e20d6c01e, type: 3}
+      propertyPath: m_text
+      value: '  Mode sombre'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1921413472026171466, guid: 3fc942e97f6f0f5469c8fa4e20d6c01e, type: 3}
+      propertyPath: m_margin.z
+      value: -13.026306
+      objectReference: {fileID: 0}
+    - target: {fileID: 1921413472026171466, guid: 3fc942e97f6f0f5469c8fa4e20d6c01e, type: 3}
       propertyPath: m_fontColor.b
       value: 1
       objectReference: {fileID: 0}
@@ -1369,7 +1377,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1772092357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1545,6 +1553,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 517025051}
     m_Modifications:
+    - target: {fileID: 1921413472026171466, guid: 3fc942e97f6f0f5469c8fa4e20d6c01e, type: 3}
+      propertyPath: m_text
+      value: '  Mode bleu'
+      objectReference: {fileID: 0}
     - target: {fileID: 4258560163109086978, guid: 3fc942e97f6f0f5469c8fa4e20d6c01e, type: 3}
       propertyPath: m_Name
       value: Menu
