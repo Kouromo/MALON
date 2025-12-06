@@ -1,0 +1,18 @@
+{
+  "player": {
+    "nom": "",
+    "prenom": "",
+    "metier": "Vendeur",
+    "email": ""
+  },
+  "dailyGames": {
+    "date": "2025-12-06",
+    "vraiFaux": [],
+    "devinePrompt": [],
+    "creerPrompt": []
+  },
+  "scores": {
+    "total": 0,
+    "streak": 0
+  }
+}
