@@ -8,6 +8,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Daylia/Scenes/Connexion.unity
     guid: b961765254a25224d8a55a70b2a71d85
+  - enabled: 1
+    path: Assets/Daylia/Scenes/Menu.unity
+    guid: 53a5cade7c65c7747b618ac820cfa928
+  - enabled: 1
+    path: Assets/Daylia/Scenes/Inscription.unity
+    guid: 00077b227ddf54d4cabd514aea7783f5
+  - enabled: 1
+    path: Assets/Daylia/Scenes/Vrai ou Faux.unity
+    guid: 1dcf528623c41894db2c3057f37c88c7
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
