@@ -18,4 +18,19 @@ public class SceneSwitcher : MonoBehaviour
             Debug.LogWarning("Aucune scène assignée au SceneSwitcher!");
         }
     }
+
+    public void LoadSceneIfLoggedIn(string sceneName)
+    {
+        // Vérifie si l'utilisateur est connecté
+        if (AuthManager.isLoggedIn)
+        {
+            // Si oui, charge la scène
+            SceneManager.LoadScene(sceneName);
+        }
+        else
+        {
+            // Sinon, l'empêche de charger la scène
+            Debug.LogWarning("Connexion requise pour charger cette scène!");
+        }
+    }
 }
