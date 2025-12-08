@@ -262,7 +262,7 @@ GameObject:
   - component: {fileID: 203854329}
   - component: {fileID: 203854328}
   m_Layer: 5
-  m_Name: Mobile Connexion Blue
+  m_Name: Mobile Menu Blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -364,7 +364,7 @@ GameObject:
   - component: {fileID: 210834878}
   - component: {fileID: 210834877}
   m_Layer: 5
-  m_Name: Mobile Connexion Light
+  m_Name: Mobile  Menu Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4430,7 +4430,7 @@ GameObject:
   - component: {fileID: 1719529771}
   - component: {fileID: 1719529770}
   m_Layer: 5
-  m_Name: Mobile Connexion Dark
+  m_Name: Mobile Menu Dark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

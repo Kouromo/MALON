@@ -705,7 +705,7 @@ GameObject:
   - component: {fileID: 358903567}
   - component: {fileID: 358903566}
   m_Layer: 5
-  m_Name: Mobile Vrai Faux Clair
+  m_Name: Mobile Vrai Faux Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3708,7 +3708,7 @@ GameObject:
   - component: {fileID: 2056378082}
   - component: {fileID: 2056378081}
   m_Layer: 5
-  m_Name: Mobile Vrai Faux Bleu
+  m_Name: Mobile Vrai Faux Blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
