@@ -3425,6 +3425,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Profil
       objectReference: {fileID: 0}
+    - target: {fileID: 730065032751051277, guid: c627c869b91e1914fafae4c8b38ec7fe, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 750601177158651260, guid: c627c869b91e1914fafae4c8b38ec7fe, type: 3}
       propertyPath: m_text
       value: ' Profil'
