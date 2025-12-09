@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class AuthManager : MonoBehaviour
 {
+    [Header("Mobile ?")]
+    public bool isMobile = false;
+
     // --- Champs assignables dans l'Inspecteur (Drag & Drop) ---
     // Changez à InputField si vous n'utilisez pas TextMeshPro
     [Header("UI Fields")]
@@ -88,6 +91,9 @@ public class AuthManager : MonoBehaviour
             // Connexion réussie !
             isLoggedIn = true;
             Debug.Log("Connexion réussie! Bienvenue.");
+            // Load soit Menu soit Mobile Menu selon le cas
+            if (isMobile)
+                SceneManager.LoadScene("Mobile Menu");
             SceneManager.LoadScene("Menu");
 
             // Chargez les données de l'utilisateur pour une utilisation dans le jeu avec cette commande :

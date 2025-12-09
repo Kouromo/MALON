@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 public class DataLoginController : MonoBehaviour
 {
 
+    [Header ("Mobile ?")]
+    public bool isMobile = false;
+
     public TMP_InputField inputLoginEmail;
     public TMP_InputField inputLoginPassword;
     public TextMeshProUGUI errorMessageText;
@@ -26,7 +29,16 @@ public class DataLoginController : MonoBehaviour
         if (DataManager.Instance.VerifyLogin(email, password))
         {
             Debug.Log("Connexion réussie !");
-            SceneManager.LoadScene("Menu");
+            // Load soit Menu soit Mobile Menu selon le cas
+            if (isMobile)
+            {
+                Debug.Log("Chargement Mobile Menu");
+                SceneManager.LoadScene("Mobile Menu");
+            }
+            else
+            {
+                SceneManager.LoadScene("Menu");
+            }
         }
         else
         {
