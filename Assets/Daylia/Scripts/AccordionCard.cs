@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AccordionCard : MonoBehaviour
 {
@@ -10,12 +11,18 @@ public class AccordionCard : MonoBehaviour
 
     private bool isOpen = true; // Ouvert par défaut ?
 
+    private void Start()
+    {
+        LayoutRebuilder.ForceRebuildLayoutImmediate(transform.parent as RectTransform);
+    }
+
     public void ToggleCard()
     {
         isOpen = !isOpen;
 
         // 1. Activer ou Désactiver le contenu
         contentScrollArea.SetActive(isOpen);
+        LayoutRebuilder.ForceRebuildLayoutImmediate(transform.parent as RectTransform);
 
         // 2. Faire tourner la flèche (Visuel)
         if (arrowIcon != null)
