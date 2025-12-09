@@ -18,10 +18,37 @@ public class UISyncManager : MonoBehaviour
     public SynchronizedTextInput[] lightTextInputs;
 
     [System.Serializable]
+    public class SynchronizedSimpleText
+    {
+        public TextMeshProUGUI simpleText;
+    }
+
+    [Header("C. Synchronisation du Texte Simple")]
+    public SynchronizedSimpleText[] darkSimpleTexts;
+    public SynchronizedSimpleText[] blueSimpleTexts;
+    public SynchronizedSimpleText[] lightSimpleTexts;
+
+    [System.Serializable]
     public class SynchronizedButtonSelection
     {
         [Tooltip("La liste des 4 boutons dans ce thème. Le premier est l'index 0, etc.")]
         public GameObject[] selectionButtons; 
+    }
+
+    [System.Serializable]
+    public class ButtonAnswerData
+    {
+        [Tooltip("Texte affiché sur le bouton")]
+        public string answerText;
+        [Tooltip("Indique si c'est la bonne réponse")]
+        public bool isCorrectAnswer;
+    }
+
+    [System.Serializable]
+    public class SynchronizedButtonAnswers
+    {
+        [Tooltip("Les données des 4 réponses pour ce thème")]
+        public ButtonAnswerData[] answers = new ButtonAnswerData[4];
     }
     
     [Header("B. Synchronisation des Sélections de Bouton")]
@@ -29,6 +56,12 @@ public class UISyncManager : MonoBehaviour
     public SynchronizedButtonSelection[] darkButtonSets;
     public SynchronizedButtonSelection[] blueButtonSets;
     public SynchronizedButtonSelection[] lightButtonSets;
+
+    [Header("D. Synchronisation des Réponses de Bouton")]
+    [Tooltip("Les données des réponses (texte et correctness) pour chaque ensemble de boutons")]
+    public SynchronizedButtonAnswers[] darkButtonAnswers;
+    public SynchronizedButtonAnswers[] blueButtonAnswers;
+    public SynchronizedButtonAnswers[] lightButtonAnswers;
     
     private const string ThemeKey = "CurrentThemeMode";
     private const string ButtonSelectionKey = "SelectedButtonIndex_"; // Clé pour PlayerPrefs (on ajoutera l'index de la liste)
@@ -86,7 +119,127 @@ public class UISyncManager : MonoBehaviour
         }
 
         Debug.Log($"Synchronisation de {activeElements.Length} éléments effectuée.");
-    }    
+    }
+
+    public void SyncAllSimpleTexts()
+    {
+        // 1. Déterminer quel ensemble d'éléments est actuellement visible
+        int currentMode = PlayerPrefs.GetInt(ThemeKey, 0); 
+
+        // Vérification de sécurité: assurez-vous que les listes ont la même taille.
+        if (darkSimpleTexts.Length != blueSimpleTexts.Length || darkSimpleTexts.Length != lightSimpleTexts.Length)
+        {
+            Debug.LogError("Les listes d'éléments de thème DOIVENT avoir la même taille pour la synchronisation!");
+            return;
+        }
+
+        // 2. Parcourir et synchroniser les valeurs
+        for (int i = 0; i < darkSimpleTexts.Length; i++)
+        {
+            string valueToSync = "";
+            
+            // Récupérer la valeur du thème ACTIF
+            switch (currentMode)
+            {
+                case 0: 
+                    if (darkSimpleTexts[i].simpleText != null)
+                        valueToSync = darkSimpleTexts[i].simpleText.text;
+                    break;
+                case 1: 
+                    if (blueSimpleTexts[i].simpleText != null)
+                        valueToSync = blueSimpleTexts[i].simpleText.text;
+                    break;
+                case 2: 
+                    if (lightSimpleTexts[i].simpleText != null)
+                        valueToSync = lightSimpleTexts[i].simpleText.text;
+                    break;
+            }
+
+            // Écrire cette valeur dans TOUS les thèmes (y compris l'actif, pour la cohérence)
+            if (darkSimpleTexts[i].simpleText != null)
+            {
+                darkSimpleTexts[i].simpleText.text = valueToSync;
+            }
+            
+            if (blueSimpleTexts[i].simpleText != null)
+            {
+                blueSimpleTexts[i].simpleText.text = valueToSync;
+            }
+            
+            if (lightSimpleTexts[i].simpleText != null)
+            {
+                lightSimpleTexts[i].simpleText.text = valueToSync;
+            }
+        }
+
+        Debug.Log($"Synchronisation de {darkSimpleTexts.Length} éléments effectuée.");
+    }
+
+    public void SyncAllButtonAnswers()
+    {
+        // 1. Déterminer quel ensemble d'éléments est actuellement visible
+        int currentMode = PlayerPrefs.GetInt(ThemeKey, 0);
+
+        // Vérification de sécurité: assurez-vous que les listes ont la même taille.
+        if (darkButtonAnswers.Length != blueButtonAnswers.Length || darkButtonAnswers.Length != lightButtonAnswers.Length)
+        {
+            Debug.LogError("Les listes de réponses de thème DOIVENT avoir la même taille pour la synchronisation!");
+            return;
+        }
+
+        // 2. Parcourir et synchroniser les valeurs
+        for (int i = 0; i < darkButtonAnswers.Length; i++)
+        {
+            // Récupérer les données du thème ACTIF
+            SynchronizedButtonAnswers sourceAnswers = null;
+            
+            switch (currentMode)
+            {
+                case 0: sourceAnswers = darkButtonAnswers[i]; break;
+                case 1: sourceAnswers = blueButtonAnswers[i]; break;
+                case 2: sourceAnswers = lightButtonAnswers[i]; break;
+            }
+
+            if (sourceAnswers == null || sourceAnswers.answers.Length != 4)
+                continue;
+
+            // Synchroniser vers TOUS les thèmes
+            SyncButtonAnswersForSet(i, sourceAnswers);
+        }
+
+        Debug.Log($"Synchronisation de {darkButtonAnswers.Length} ensembles de réponses effectuée.");
+    }
+
+    private void SyncButtonAnswersForSet(int setIndex, SynchronizedButtonAnswers sourceAnswers)
+    {
+        // Copier les données source vers tous les thèmes
+        for (int i = 0; i < 4; i++)
+        {
+            if (sourceAnswers.answers[i] == null)
+                continue;
+
+            // Synchroniser vers Dark
+            if (darkButtonAnswers[setIndex].answers[i] != null)
+            {
+                darkButtonAnswers[setIndex].answers[i].answerText = sourceAnswers.answers[i].answerText;
+                darkButtonAnswers[setIndex].answers[i].isCorrectAnswer = sourceAnswers.answers[i].isCorrectAnswer;
+            }
+
+            // Synchroniser vers Blue
+            if (blueButtonAnswers[setIndex].answers[i] != null)
+            {
+                blueButtonAnswers[setIndex].answers[i].answerText = sourceAnswers.answers[i].answerText;
+                blueButtonAnswers[setIndex].answers[i].isCorrectAnswer = sourceAnswers.answers[i].isCorrectAnswer;
+            }
+
+            // Synchroniser vers Light
+            if (lightButtonAnswers[setIndex].answers[i] != null)
+            {
+                lightButtonAnswers[setIndex].answers[i].answerText = sourceAnswers.answers[i].answerText;
+                lightButtonAnswers[setIndex].answers[i].isCorrectAnswer = sourceAnswers.answers[i].isCorrectAnswer;
+            }
+        }
+    }
     
     // Fonction appelée par les 4 boutons de sélection
     public void SelectAndSyncButton(int listIndex, int selectedIndex)
