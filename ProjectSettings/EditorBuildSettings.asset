@@ -29,6 +29,36 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Daylia/Scenes/Mobile Vrai ou faux.unity
     guid: 56222ee22ccae3b4db566b55636bb8e0
+  - enabled: 1
+    path: Assets/Daylia/Scenes/Creer son prompt.unity
+    guid: b9194783c34bc624da3d30cc1be9cb65
+  - enabled: 1
+    path: Assets/Daylia/Scenes/Devinez le prompt.unity
+    guid: 1f1004ce9734b5b41b393279e4858af6
+  - enabled: 1
+    path: Assets/Daylia/Scenes/Glossaire.unity
+    guid: aa4cb543ee14a3344b8e51b8d185803e
+  - enabled: 1
+    path: Assets/Daylia/Scenes/Mobile 4Reponses.unity
+    guid: c7a072bc54b907f4c8276cbf92262eef
+  - enabled: 1
+    path: "Assets/Daylia/Scenes/Mobile Cr\xE9er le prompt.unity"
+    guid: c3737f328221b8b4cbed07c289fb4e8a
+  - enabled: 1
+    path: Assets/Daylia/Scenes/Mobile Devinez le prompt.unity
+    guid: 54c95174d35e0c74cbbe4fe5c03ff84b
+  - enabled: 1
+    path: Assets/Daylia/Scenes/Mobile Glossaire.unity
+    guid: 09343dcb456d25c48878d10a6da19d27
+  - enabled: 1
+    path: Assets/Daylia/Scenes/Mobile Menu.unity
+    guid: 341ef18afa52f1d4ea5618dc26bdb542
+  - enabled: 1
+    path: Assets/Daylia/Scenes/Mobile Options.unity
+    guid: 5bef5f6af8dce5c4d8c28c185e99199c
+  - enabled: 1
+    path: Assets/Daylia/Scenes/Mobile Profile.unity
+    guid: 1cc598a297438e240b8e1afc37af7778
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

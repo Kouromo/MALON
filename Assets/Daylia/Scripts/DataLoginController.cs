@@ -7,8 +7,17 @@ public class DataLoginController : MonoBehaviour
 
     public TMP_InputField inputLoginEmail;
     public TMP_InputField inputLoginPassword;
+    public TextMeshProUGUI errorMessageText;
+
+
     public void OnLoginButtonClicked()
     {
+        // Réinitialiser le message d'erreur à chaque clic
+        if (errorMessageText != null) 
+        {
+            errorMessageText.text = "";
+        }
+
         string email = inputLoginEmail.text;
         string password = inputLoginPassword.text;
 
@@ -23,6 +32,10 @@ public class DataLoginController : MonoBehaviour
         {
             Debug.LogError("Email ou mot de passe incorrect.");
             // Afficher un message d'erreur à l'utilisateur
+            if (errorMessageText != null) 
+            {
+                errorMessageText.text = "Email ou mot de passe incorrect.";
+            }
         }
     }
 }

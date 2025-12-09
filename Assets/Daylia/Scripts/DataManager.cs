@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.IO;
+using UnityEngine.SceneManagement;
 
 public class DataManager : MonoBehaviour
 {
@@ -37,7 +38,14 @@ public class DataManager : MonoBehaviour
         PlayerPrefs.SetString("User_Position", profile.position);
         
         // On pourrait aussi sauvegarder le hash pour ne pas le recharger du JSON
-        PlayerPrefs.SetString("User_PasswordHash", profile.passwordHash); 
+        PlayerPrefs.SetString("User_PasswordHash", profile.passwordHash);
+
+        PlayerPrefs.SetInt("IsLoggedIn", 1); // Connecté
+    
+        // Mémoriser l'email de l'utilisateur connecté pour le chargement automatique
+        PlayerPrefs.SetString("LastLoggedInEmail", profile.email);
+        
+        PlayerPrefs.Save(); 
 
         PlayerPrefs.Save(); // Assurez-vous d'appeler Save()
         Debug.Log("PlayerPrefs de session mis à jour.");
@@ -104,5 +112,15 @@ public class DataManager : MonoBehaviour
     {
         // *Implémenter une fonction de hachage (hors proto)*
         return password; 
+    }
+
+    public void Logout()
+    {
+        // Réinitialiser le drapeau de connexion
+        PlayerPrefs.SetInt("IsLoggedIn", 0); // Déconnecté
+        
+        PlayerPrefs.Save();
+    
+        SceneManager.LoadScene("Connexion");
     }
 }
