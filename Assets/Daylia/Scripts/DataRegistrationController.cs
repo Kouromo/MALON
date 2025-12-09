@@ -4,6 +4,9 @@ using UnityEngine.SceneManagement;
 
 public class RegistrationController : MonoBehaviour
 {
+    [Header ("Mobile ?")]
+    public bool isMobile = false;
+
     // Liez ces champs dans l'Inspecteur Unity à vos Input Fields
     public TMP_InputField inputFirstName;
     public TMP_InputField inputLastName;
@@ -69,6 +72,10 @@ public class RegistrationController : MonoBehaviour
 
         // 4. Passer à la scène suivante
         Debug.Log("Inscription réussie pour : " + email);
+        // Load soit Menu soit Mobile Menu selon le cas
+        if (isMobile)
+            SceneManager.LoadScene("Mobile Menu");
+        else
         SceneManager.LoadScene("Menu");
     }
 }
