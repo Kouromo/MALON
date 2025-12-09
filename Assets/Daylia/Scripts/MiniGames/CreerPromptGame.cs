@@ -6,121 +6,179 @@ using TMPro;
 using System.Collections;
 using System.Text;
 
-public class CreerPromptGame : MonoBehaviour 
+[System.Serializable]
+public class CreerPromptUISet
 {
-    [Header("UI")]
     public TextMeshProUGUI sujetText;
     public TMP_InputField userPromptInput;
     public Button submitButton;
     public TextMeshProUGUI feedbackText;
     public TextMeshProUGUI scoreText;
-    public Button backToMenuButton;
-    
+}
+
+public class CreerPromptGame : MonoBehaviour 
+{
+    [Header("UI Light")]
+    public CreerPromptUISet lightUI;
+
+    [Header("UI Dark")]
+    public CreerPromptUISet darkUI;
+
+    [Header("UI Blue")]
+    public CreerPromptUISet blueUI;
+
+    private CreerPromptUISet ui;
+
     private string apiURL = "http://localhost:5001/api/rag/chat";
+
+    string CurrentJob => PlayerPrefs.GetString("User_Position", "Vendeur");
+
+    private int exerciseCount = 0;
+    private const int MAX_EXERCISES = 1;
+    private const string CPCountKey = "CP_ExercisesDone";
+    private const string ThemeKey = "CurrentThemeMode"; // 0=Dark,1=Blue,2=Light
+    
+    void Awake()
+    {
+        int theme = PlayerPrefs.GetInt(ThemeKey, 0);
+        switch (theme)
+        {
+            case 2: ui = lightUI; break;
+            case 1: ui = blueUI;  break;
+            case 0:
+            default: ui = darkUI; break;
+        }
+    }
     
     void Start() 
     {
-        submitButton.onClick.AddListener(SubmitAnswer);
-        backToMenuButton.onClick.AddListener(() => SceneManager.LoadScene("Scene_Menu"));
-        GenerateSujet();
+        ui.submitButton.onClick.AddListener(SubmitAnswer);
+
+        exerciseCount = PlayerPrefs.GetInt(CPCountKey, 0);
+
+        if (exerciseCount >= MAX_EXERCISES)
+            EndGame();
+        else
+            GenerateSujet();
     }
     
     void GenerateSujet()
     {
-        string job = GlobalGameState.Job;
+        if (exerciseCount >= MAX_EXERCISES)
+        {
+            EndGame();
+            return;
+        }
+
+        string job = CurrentJob;
         string prompt = $@"
-    Génère 1 SUJET concret pour un collaborateur {job} chez Orange.
+Génère 1 SUJET concret pour un collaborateur {job} chez Orange.
 
-    Objectif:
-    - Le sujet doit décrire une situation métier précise où l'IA pourrait aider (relation client, dépannage, analyse, management d'équipe, etc.).
-    - Une seule phrase, claire et spécifique.
+Objectif:
+- Le sujet doit décrire une situation métier précise où l'IA pourrait aider (relation client, dépannage, analyse, management d'équipe, etc.).
+- Une seule phrase, claire et spécifique.
 
-    Format EXACT (rien d'autre):
-    SUJET: [1 phrase précise]
-    ";
+Format EXACT (rien d'autre):
+SUJET: [1 phrase précise]
+";
+
+        ui.submitButton.interactable = false;
+        ui.feedbackText.text = "IA génère un sujet...";
 
         StartCoroutine(CallIA(prompt, response => {
             string line = response.Trim();
             if (line.StartsWith("SUJET:"))
                 line = line.Replace("SUJET:", "").Trim();
 
-            sujetText.text = line;
-            userPromptInput.text = "";
-            feedbackText.text = "Écris le MEILLEUR prompt possible pour ce sujet :";
-            scoreText.text = "";
-            submitButton.interactable = true;
+            ui.sujetText.text = line;
+            ui.userPromptInput.text = "";
+            ui.feedbackText.text = "Écris le MEILLEUR prompt possible pour ce sujet :";
+            ui.scoreText.text = "";
+            ui.submitButton.interactable = true;
         }));
     }
-
     
     void SubmitAnswer()
     {
-        string userPrompt = userPromptInput.text.Trim();
-        string sujet = sujetText.text;
+        string userPrompt = ui.userPromptInput.text.Trim();
+        string sujet = ui.sujetText.text;
 
-        // Vérification locale stricte AVANT IA
         if (string.IsNullOrEmpty(userPrompt))
         {
-            feedbackText.text = "Écris ton prompt !";
+            ui.feedbackText.text = "Écris ton prompt !";
             return;
         }
 
-        // Trop court ou vide de sens
         if (userPrompt.Length < 5)
         {
-            feedbackText.text = "Ton prompt est trop court pour être utile. Essaie de décrire précisément ce que tu veux que l'IA fasse.";
-            scoreText.text = "Note: 0/10";
+            ui.feedbackText.text = "Ton prompt est trop court pour être utile. Essaie de décrire précisément ce que tu veux que l'IA fasse.";
+            ui.scoreText.text = "Note: 0/10";
             return;
         }
 
-        // Cas simples à bannir
         string lower = userPrompt.ToLower();
         if (lower == "a" || lower == "test" || lower == "ok")
         {
-            feedbackText.text = "Ton prompt est trop vague. Décris la situation, le contexte et ce que tu attends de l'IA.";
-            scoreText.text = "Note: 0/10";
+            ui.feedbackText.text = "Ton prompt est trop vague. Décris la situation, le contexte et ce que tu attends de l'IA.";
+            ui.scoreText.text = "Note: 0/10";
             return;
         }
 
-        string job = GlobalGameState.Job;
+        string job = CurrentJob;
         string prompt = $@"
-    Tu dois ÉVALUER la qualité d'un prompt écrit par un collaborateur {job} chez Orange.
+Tu dois ÉVALUER la qualité d'un prompt écrit par un collaborateur {job} chez Orange.
 
-    SUJET: {sujet}
-    PROMPT UTILISATEUR: {userPrompt}
+SUJET: {sujet}
+PROMPT UTILISATEUR: {userPrompt}
 
-    Barème (très strict, à respecter absolument):
-    - 0/10 : prompt très court, vide, ou complètement hors sujet.
-    - 1-3/10 : très faible, presque inutilisable.
-    - 4-5/10 : moyen, des idées mais trop vague ou incomplet.
-    - 6-8/10 : bon, utilisable mais améliorable.
-    - 9-10/10 : excellent, très clair, très précis, directement exploitable.
+Barème (très strict, à respecter absolument):
+- 0/10 : prompt très court, vide, ou complètement hors sujet.
+- 1-3/10 : très faible, presque inutilisable.
+- 4-5/10 : moyen, des idées mais trop vague ou incomplet.
+- 6-8/10 : bon, utilisable mais améliorable.
+- 9-10/10 : excellent, très clair, très précis, directement exploitable.
 
-    IMPORTANT:
-    - Si le prompt est très court ou sans sens, tu dois OBLIGATOIREMENT mettre 0/10.
-    - Tu dois respecter strictement ce barème.
+IMPORTANT:
+- Si le prompt est très court ou sans sens, tu dois OBLIGATOIREMENT mettre 0/10.
+- Tu dois respecter strictement ce barème.
 
-    Format EXACT (rien d'autre):
-    NOTE: [0-10]/10
-    FEEDBACK: [2 à 3 phrases avec ce qui va / ne va pas]
-    SUCCÈS: [OUI/NON] (OUI uniquement si NOTE >= 5)
-    ";
+Format EXACT (rien d'autre):
+NOTE: [0-10]/10
+FEEDBACK: [2 à 3 phrases avec ce qui va / ne va pas]
+SUCCÈS: [OUI/NON] (OUI uniquement si NOTE >= 5)
+";
 
-        submitButton.interactable = false;
+        ui.submitButton.interactable = false;
+        ui.feedbackText.text = "IA évalue ton prompt...";
+
         StartCoroutine(CallIA(prompt, response => {
-            feedbackText.text = response;
+            ui.feedbackText.text = response;
 
             int note = ExtractNote(response);
-            scoreText.text = $"Note: {note}/10";
+            ui.scoreText.text = $"Note: {note}/10";
             bool success = note >= 5;
 
-            Invoke(nameof(GenerateSujet), 6f);
+            exerciseCount++;
+            PlayerPrefs.SetInt(CPCountKey, exerciseCount);
+            PlayerPrefs.Save();
+
+            EndGame();
         }));
     }
     
+    void EndGame()
+    {
+        ui.sujetText.text = "C'est tout pour aujourd'hui !";
+        if (exerciseCount >= MAX_EXERCISES)
+        {
+            ui.feedbackText.text += "\n\nTu as terminé l'exercice du jour sur la création de prompt.\nReviens demain pour un nouveau sujet.";
+        }
+        ui.submitButton.interactable = false;
+        ui.userPromptInput.interactable = false;
+    }
+
     int ExtractNote(string feedback)
     {
-        // Cherche "NOTE: 8/10" dans la réponse
         string pattern = @"NOTE:\s*(\d+)/10";
         System.Text.RegularExpressions.Match match = 
             System.Text.RegularExpressions.Regex.Match(feedback, pattern);
@@ -129,11 +187,9 @@ public class CreerPromptGame : MonoBehaviour
     
     IEnumerator CallIA(string prompt, System.Action<string> callback)
     {
-        feedbackText.text = "IA réfléchit...";
-        
         ChatRequest request = new ChatRequest { 
             message = prompt,
-            metier = GlobalGameState.Job 
+            metier = CurrentJob 
         };
         
         string json = JsonUtility.ToJson(request);
@@ -157,7 +213,7 @@ public class CreerPromptGame : MonoBehaviour
             }
             else
             {
-                feedbackText.text = $"Erreur {req.responseCode}";
+                ui.feedbackText.text = $"Erreur {req.responseCode}";
             }
         }
     }

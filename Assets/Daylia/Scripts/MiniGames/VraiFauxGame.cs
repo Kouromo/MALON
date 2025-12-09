@@ -20,32 +20,70 @@ public class ChatResponse
     public string status;
 }
 
-public class VraiFauxGame : MonoBehaviour  // ← Renommé
+[System.Serializable]
+public class VraiFauxUISet
 {
-    [Header("UI")]
     public TextMeshProUGUI questionText;
-    public Button vraiButton;      // ← NOUVEAU
-    public Button fauxButton;      // ← NOUVEAU
+    public Button vraiButton;
+    public Button fauxButton;
     public TextMeshProUGUI feedbackText;
     public TextMeshProUGUI scoreText;
-    public Button backToMenuButton;
-    
+    public Button nextButton;
+}
+
+public class VraiFauxGame : MonoBehaviour
+{
+    [Header("UI Light")]
+    public VraiFauxUISet lightUI;
+
+    [Header("UI Dark")]
+    public VraiFauxUISet darkUI;
+
+    [Header("UI Blue")]
+    public VraiFauxUISet blueUI;
+
+    private VraiFauxUISet ui;  // le set utilisé selon le thème
+
     private string apiURL = "http://localhost:5001/api/rag/chat";
     private int score = 0;
     private int questionCount = 0;
     private const int MAX_QUESTIONS = 4;
+
+    private const string VFCountKey = "VF_QuestionsDone";
+    private const string ThemeKey = "CurrentThemeMode"; // 0=Dark,1=Blue,2=Light (comme dans UISyncManager)
+
+    string CurrentJob => PlayerPrefs.GetString("User_Position", "Vendeur");
     
+    void Awake()
+    {
+        int theme = PlayerPrefs.GetInt(ThemeKey, 0);
+        switch (theme)
+        {
+            case 2: ui = lightUI; break;   // 2 = Light
+            case 1: ui = blueUI;  break;   // 1 = Blue
+            case 0:
+            default: ui = darkUI; break;   // 0 = Dark par défaut
+        }
+    }
+
     void Start() 
     {
-        // Récupère infos globales
-        Debug.Log($"Vrai/Faux: {GlobalGameState.FirstName} ({GlobalGameState.Job})");
+        string firstName = PlayerPrefs.GetString("User_FirstName", "");
+        string lastName  = PlayerPrefs.GetString("User_LastName", "");
+        Debug.Log($"Vrai/Faux: {firstName} {lastName} ({CurrentJob})");
+
+        questionCount = PlayerPrefs.GetInt(VFCountKey, 0);
+
+        ui.vraiButton.onClick.AddListener(() => SubmitAnswer("VRAI"));
+        ui.fauxButton.onClick.AddListener(() => SubmitAnswer("FAUX"));
+        ui.nextButton.onClick.AddListener(OnNextButtonClicked);
         
-        vraiButton.onClick.AddListener(() => SubmitAnswer("VRAI"));
-        fauxButton.onClick.AddListener(() => SubmitAnswer("FAUX"));
-        backToMenuButton.onClick.AddListener(() => SceneManager.LoadScene("Scene_Menu"));
-        
-        scoreText.text = "Score: 0";
-        GenerateQuestion();
+        ui.scoreText.text = "Score: 0";
+
+        if (questionCount >= MAX_QUESTIONS)
+            EndGame();
+        else
+            GenerateQuestion();
     }
     
     void GenerateQuestion()
@@ -56,8 +94,8 @@ public class VraiFauxGame : MonoBehaviour  // ← Renommé
             return;
         }
         
-        string job = GlobalGameState.Job;
-string prompt = $@"
+        string job = CurrentJob;
+        string prompt = $@"
 Tu génères une question VRAI/FAUX pédagogique pour un collaborateur Orange au métier: {job}.
 Objectif: lui montrer comment l'IA peut l'aider dans son travail au quotidien, sans le remplacer.
 
@@ -70,58 +108,87 @@ Format EXACT de ta réponse (rien d'autre):
 QUESTION: [ta question ici]?
 ";
 
+        ui.vraiButton.interactable = false;
+        ui.fauxButton.interactable = false;
+        ui.nextButton.interactable = false;
+        ui.feedbackText.text = "IA prépare une nouvelle question...";
 
         StartCoroutine(CallIA(prompt, response => {
-            questionText.text = response;
-            feedbackText.text = $"Question {questionCount + 1}/{MAX_QUESTIONS}";
-            vraiButton.interactable = true;
-            fauxButton.interactable = true;
+            ui.questionText.text = response;
+            ui.feedbackText.text = $"Question {questionCount + 1}/{MAX_QUESTIONS}\nRéponds par Vrai ou Faux.";
+            ui.vraiButton.interactable = true;
+            ui.fauxButton.interactable = true;
+            ui.nextButton.interactable = false;
         }));
     }
     
     void SubmitAnswer(string userAnswer)
     {
-        vraiButton.interactable = false;
-        fauxButton.interactable = false;
+        ui.vraiButton.interactable = false;
+        ui.fauxButton.interactable = false;
+        ui.nextButton.interactable = false;
         
-        string question = questionText.text;
-        string job = GlobalGameState.Job;
+        string question = ui.questionText.text;
+        string job = CurrentJob;
         
-        string prompt = $@"Serious game Orange {job}.
+        string prompt = $@"
+Serious game Orange {job}.
 QUESTION: {question}
 RÉPONSE: {userAnswer}
 
 FEEDBACK PÉDAGOGIQUE (2 phrases):
 1. VRAI ou FAUX ? 
 2. Explication simple + utilité IA pour {job}.
-Ton: positif, rassurant.";
+Ton: positif, rassurant.
+";
 
         StartCoroutine(CallIA(prompt, response => {
-            feedbackText.text = response;
+            ui.feedbackText.text = response;
             score += 10;
-            scoreText.text = $"Score: {score}";
-            questionCount++;
+            ui.scoreText.text = $"Score: {score}";
             
-            Invoke(nameof(GenerateQuestion), 3f);
+            questionCount++;
+            PlayerPrefs.SetInt(VFCountKey, questionCount);
+            PlayerPrefs.Save();
+
+            if (questionCount >= MAX_QUESTIONS)
+            {
+                EndGame();
+            }
+            else
+            {
+                ui.nextButton.interactable = true;
+                ui.feedbackText.text += "\n\nClique sur 'Suivant' pour passer à la prochaine question.";
+            }
         }));
+    }
+
+    void OnNextButtonClicked()
+    {
+        if (questionCount < MAX_QUESTIONS)
+            GenerateQuestion();
+        else
+            EndGame();
     }
     
     void EndGame()
     {
-        questionText.text = "Session terminée !";
-        feedbackText.text = $"Score final: {score}/{MAX_QUESTIONS * 10}\n" +
-                           $"Reviens demain pour de nouveaux défis !";
-        vraiButton.gameObject.SetActive(false);
-        fauxButton.gameObject.SetActive(false);
+        ui.questionText.text = "C'est tout pour aujourd'hui !";
+        ui.feedbackText.text = $"Score final: {score}/{MAX_QUESTIONS * 10}\n" +
+                               $"Reviens demain pour de nouveaux défis !";
+
+        ui.vraiButton.interactable = false;
+        ui.fauxButton.interactable = false;
+        ui.nextButton.interactable = false;
     }
     
     IEnumerator CallIA(string prompt, System.Action<string> callback)
     {
-        feedbackText.text = "IA réfléchit...";
+        ui.feedbackText.text = "IA réfléchit...";
         
         ChatRequest request = new ChatRequest { 
             message = prompt,
-            metier = GlobalGameState.Job 
+            metier = CurrentJob
         };
         
         string json = JsonUtility.ToJson(request);
@@ -145,7 +212,7 @@ Ton: positif, rassurant.";
             }
             else
             {
-                feedbackText.text = $"Erreur {req.responseCode}";
+                ui.feedbackText.text = $"Erreur {req.responseCode}";
             }
         }
     }

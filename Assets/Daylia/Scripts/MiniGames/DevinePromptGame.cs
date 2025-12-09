@@ -6,50 +6,98 @@ using TMPro;
 using System.Collections;
 using System.Text;
 
-public class DevinePromptGame : MonoBehaviour 
+[System.Serializable]
+public class DevinePromptUISet
 {
-    [Header("UI")]
-    public TextMeshProUGUI generatedText;     // Texte généré par IA
-    public TMP_InputField userPromptInput;    // Prompt deviné par utilisateur
+    public TextMeshProUGUI generatedText;   // Texte généré par IA
+    public TMP_InputField userPromptInput;  // Prompt deviné par utilisateur
     public Button submitButton;
     public TextMeshProUGUI feedbackText;
-    public Button backToMenuButton;
-    
+    public Button nextButton;               // Bouton "Suivant"
+}
+
+public class DevinePromptGame : MonoBehaviour 
+{
+    [Header("UI Light")]
+    public DevinePromptUISet lightUI;
+
+    [Header("UI Dark")]
+    public DevinePromptUISet darkUI;
+
+    [Header("UI Blue")]
+    public DevinePromptUISet blueUI;
+
+    private DevinePromptUISet ui;
+
     private string apiURL = "http://localhost:5001/api/rag/chat";
+
+    string CurrentJob => PlayerPrefs.GetString("User_Position", "Vendeur");
+
+    private int exerciseCount = 0;
+    private const int MAX_EXERCISES = 2;
+    private const string DPCountKey = "DP_ExercisesDone";
+    private const string ThemeKey = "CurrentThemeMode"; // 0=Dark,1=Blue,2=Light
     
+    void Awake()
+    {
+        int theme = PlayerPrefs.GetInt(ThemeKey, 0);
+        switch (theme)
+        {
+            case 2: ui = lightUI; break;
+            case 1: ui = blueUI;  break;
+            case 0:
+            default: ui = darkUI; break;
+        }
+    }
+
     void Start() 
     {
-        submitButton.onClick.AddListener(SubmitAnswer);
-        backToMenuButton.onClick.AddListener(() => SceneManager.LoadScene("Scene_Menu"));
-        GenerateTextAndRealPrompt();
+        ui.submitButton.onClick.AddListener(SubmitAnswer);
+        ui.nextButton.onClick.AddListener(OnNextClicked);
+
+        exerciseCount = PlayerPrefs.GetInt(DPCountKey, 0);
+
+        if (exerciseCount >= MAX_EXERCISES)
+            EndGame();
+        else
+            GenerateTextAndRealPrompt();
     }
     
     void GenerateTextAndRealPrompt()
     {
-        string job = GlobalGameState.Job;
+        if (exerciseCount >= MAX_EXERCISES)
+        {
+            EndGame();
+            return;
+        }
+
+        string job = CurrentJob;
         string prompt = $@"
-    Tu joues au mini-jeu 'Devine le prompt' pour un collaborateur {job} chez Orange.
+Tu joues au mini-jeu 'Devine le prompt' pour un collaborateur {job} chez Orange.
 
-    RÔLE:
-    - Tu dois d'abord INVENTER un PROMPT RÉEL qui pourrait être utilisé par ce collaborateur dans son métier.
-    - Ensuite, tu génères un TEXTE GÉNÉRÉ (2 à 3 phrases) qui est la réponse de l'IA à ce prompt.
-    - Le texte doit être réaliste, concret, lié au métier {job}. 
+RÔLE:
+- Tu dois d'abord INVENTER un PROMPT RÉEL qui pourrait être utilisé par ce collaborateur dans son métier.
+- Ensuite, tu génères un TEXTE GÉNÉRÉ (2 à 3 phrases) qui est la réponse de l'IA à ce prompt.
+- Le texte doit être réaliste, concret, lié au métier {job}. 
 
-    Contraintes:
-    - Ne parle pas de 'serious game' ni de 'jeu'.
-    - Situe toujours le contexte dans la vie professionnelle (client, réunion, intervention, management, etc.).
+Contraintes:
+- Ne parle pas de 'serious game' ni de 'jeu'.
+- Situe toujours le contexte dans la vie professionnelle (client, réunion, intervention, management, etc.).
 
-    Format EXACT de ta réponse (rien d'autre):
-    TEXTE: [le texte généré]
-    PROMPT: [le prompt qui a créé ce texte]
-    ";
+Format EXACT de ta réponse (rien d'autre):
+TEXTE: [le texte généré]
+PROMPT: [le prompt qui a créé ce texte]
+";
+
+        ui.submitButton.interactable = false;
+        ui.nextButton.interactable = false;
+        ui.feedbackText.text = "IA génère un nouveau texte...";
 
         StartCoroutine(CallIA(prompt, response => {
             ParseTextAndPrompt(response);
         }));
     }
 
-    
     void ParseTextAndPrompt(string response)
     {
         string[] lines = response.Split('\n');
@@ -64,67 +112,98 @@ public class DevinePromptGame : MonoBehaviour
                 realPrompt = line.Replace("PROMPT:", "").Trim();
         }
         
-        generatedText.text = text;
-        userPromptInput.text = "";
-        feedbackText.text = "Quel prompt penses-tu avoir utilisé pour générer ce texte ?";
-        submitButton.interactable = true;
+        ui.generatedText.text = text;
+        ui.userPromptInput.text = "";
+        ui.feedbackText.text = $"Exercice {exerciseCount + 1}/{MAX_EXERCISES}\nQuel prompt penses-tu avoir utilisé pour générer ce texte ?";
+        ui.submitButton.interactable = true;
+        ui.nextButton.interactable = false;
         
-        // Stocke le vrai prompt (invisible)
         PlayerPrefs.SetString("RealPrompt", realPrompt);
         PlayerPrefs.Save();
     }
     
     void SubmitAnswer()
     {
-        string userPrompt = userPromptInput.text.Trim();
+        string userPrompt = ui.userPromptInput.text.Trim();
         string realPrompt = PlayerPrefs.GetString("RealPrompt", "");
         
         if (string.IsNullOrEmpty(userPrompt))
         {
-            feedbackText.text = "Tape ton idée de prompt !";
+            ui.feedbackText.text = "Tape ton idée de prompt !";
             return;
         }
         
-        string job = GlobalGameState.Job;
+        string job = CurrentJob;
         string prompt = $@"
-    Mini-jeu 'Devine le prompt' pour un collaborateur {job} chez Orange.
+Mini-jeu 'Devine le prompt' pour un collaborateur {job} chez Orange.
 
-    OBJECTIF:
-    Tu dois comparer deux prompts:
-    - PROMPT RÉEL: le prompt exact qui a servi à générer le texte.
-    - PROMPT UTILISATEUR: ce que l'utilisateur pense être le prompt.
+OBJECTIF:
+Tu dois comparer deux prompts:
+- PROMPT RÉEL: le prompt exact qui a servi à générer le texte.
+- PROMPT UTILISATEUR: ce que l'utilisateur pense être le prompt.
 
-    TEXTE GÉNÉRÉ: {generatedText.text}
-    PROMPT RÉEL: {realPrompt}
-    PROMPT UTILISATEUR: {userPrompt}
+TEXTE GÉNÉRÉ: {ui.generatedText.text}
+PROMPT RÉEL: {realPrompt}
+PROMPT UTILISATEUR: {userPrompt}
 
-    RÈGLES IMPORTANTES:
-    - Si le PROMPT UTILISATEUR est très court (moins de 5 caractères) ou visiblement sans rapport (ex: 'a', 'test', 'ok'), la proximité doit être 0%.
-    - Ne sois PAS gentil: si le sens est loin du prompt réel, mets une faible proximité.
-    - Ne juge que sur la similarité de sens entre les deux prompts.
+RÈGLES IMPORTANTES:
+- Si le PROMPT UTILISATEUR est très court (moins de 5 caractères) ou visiblement sans rapport (ex: 'a', 'test', 'ok'), la proximité doit être 0%.
+- Ne sois PAS gentil: si le sens est loin du prompt réel, mets une faible proximité.
+- Ne juge que sur la similarité de sens entre les deux prompts.
 
-    Format EXACT de ta réponse:
-    1. Proximité: [un nombre entre 0 et 100]%
-    2. Explication: [1 à 2 phrases claires expliquant la similarité ou non]
-    3. Conseil: [1 phrase pour mieux formuler un prompt la prochaine fois]
-    ";
+Format EXACT de ta réponse:
+1. Proximité: [un nombre entre 0 et 100]%
+2. Explication: [1 à 2 phrases claires expliquant la similarité ou non]
+3. Conseil: [1 phrase pour mieux formuler un prompt la prochaine fois]
+";
 
-        submitButton.interactable = false;
+        ui.submitButton.interactable = false;
+        ui.nextButton.interactable = false;
+        ui.feedbackText.text = "IA analyse ta proposition...";
+
         StartCoroutine(CallIA(prompt, response => {
-            feedbackText.text = response;
-            Invoke(nameof(GenerateTextAndRealPrompt), 5f); // Nouvelle dans 5s
+            ui.feedbackText.text = response;
+
+            exerciseCount++;
+            PlayerPrefs.SetInt(DPCountKey, exerciseCount);
+            PlayerPrefs.Save();
+
+            if (exerciseCount >= MAX_EXERCISES)
+            {
+                EndGame();
+            }
+            else
+            {
+                ui.nextButton.interactable = true;
+                ui.feedbackText.text += "\n\nClique sur 'Suivant' pour un nouvel exercice.";
+            }
         }));
     }
 
-    
+    void OnNextClicked()
+    {
+        if (exerciseCount < MAX_EXERCISES)
+            GenerateTextAndRealPrompt();
+        else
+            EndGame();
+    }
+
+    void EndGame()
+    {
+        ui.generatedText.text = "C'est tout pour aujourd'hui !";
+        ui.feedbackText.text = "Tu as terminé tous les exercices de ce mini-jeu.\nReviens demain pour continuer à t'entraîner.";
+        ui.submitButton.interactable = false;
+        ui.nextButton.interactable = false;
+        ui.userPromptInput.interactable = false;
+    }
+
     IEnumerator CallIA(string prompt, System.Action<string> callback)
     {
-        feedbackText.text = "🤖 IA analyse...";
+        ui.feedbackText.text = "IA réfléchit...";
         
-        // Même CallIA que VraiFaux (copie-colle)
         ChatRequest request = new ChatRequest { 
             message = prompt,
-            metier = GlobalGameState.Job 
+            metier = CurrentJob 
         };
         
         string json = JsonUtility.ToJson(request);
@@ -144,7 +223,7 @@ public class DevinePromptGame : MonoBehaviour
             }
             else
             {
-                feedbackText.text = $"❌ Erreur {req.responseCode}";
+                ui.feedbackText.text = $"Erreur {req.responseCode}";
             }
         }
     }
