@@ -407,7 +407,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1428791942008493331, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.6262303
+      value: 0.46337217
       objectReference: {fileID: 0}
     - target: {fileID: 3448839659377157320, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
       propertyPath: m_AnchorMax.x
@@ -545,9 +545,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Card VRAI FAUX
       objectReference: {fileID: 0}
+    - target: {fileID: 7362264659747928859, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
+      propertyPath: m_text
+      value: "Le mode Vrai ou Faux propose une s\xE9rie de questions directement
+        adapt\xE9es au poste de travail de chaque collaborateur Orange. L\u2019utilisateur
+        doit d\xE9terminer si une affirmation est correcte ou non, puis d\xE9couvre
+        une explication claire pour comprendre la bonne r\xE9ponse.\nCe format permet
+        d\u2019apprendre rapidement les notions cl\xE9s li\xE9es \xE0 l\u2019utilisation
+        de l\u2019IA dans son activit\xE9 quotidienne, de renforcer ses r\xE9flexes
+        m\xE9tiers et de mieux saisir comment l\u2019IA peut l\u2019accompagner dans
+        ses missions."
+      objectReference: {fileID: 0}
     - target: {fileID: 8254053629371839633, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 1203.95
+      value: 838.57
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -939,7 +950,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -1455
+      value: -865
       objectReference: {fileID: 0}
     - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1001,6 +1012,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: "Cr\xE9er le prompt"
       objectReference: {fileID: 0}
+    - target: {fileID: 7362264659747928859, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
+      propertyPath: m_text
+      value: "Dans le mini-jeu Cr\xE9er le prompt, vous devez r\xE9diger un prompt
+        en d\xE9crivant un probl\xE8me r\xE9ellement li\xE9 \xE0 votre m\xE9tier
+        chez Orange : gestion d\u2019incident, intervention terrain, relation client,
+        analyse r\xE9seau, organisation de planning, ou toute autre situation que
+        vous rencontrez au quotidien.\nVotre objectif est de formuler une demande
+        claire, pr\xE9cise et bien contextualis\xE9e afin d\u2019obtenir de l\u2019IA
+        une r\xE9ponse utile et applicable \xE0 votre activit\xE9.\nUne fois votre
+        prompt valid\xE9, le jeu vous indique comment l\u2019am\xE9liorer : quelles
+        informations ajouter, comment mieux cadrer votre demande et comment guider
+        l\u2019IA pour obtenir un r\xE9sultat plus fiable.\nCe mini-jeu vous permet
+        ainsi de progresser dans la cr\xE9ation de prompts efficaces et adapt\xE9s
+        \xE0 votre poste."
+      objectReference: {fileID: 0}
     - target: {fileID: 8254053629371839633, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
@@ -1051,7 +1077,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 156472159}
-  - {fileID: 820324155}
   - {fileID: 398589406}
   - {fileID: 410026904}
   m_Father: {fileID: 163231020}
@@ -1247,7 +1272,196 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1428791942008493331, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.6262303
+      value: 0.6605669
+      objectReference: {fileID: 0}
+    - target: {fileID: 3448839659377157320, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3448839659377157320, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3448839659377157320, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -17
+      objectReference: {fileID: 0}
+    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 809.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 550
+      objectReference: {fileID: 0}
+    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 404.735
+      objectReference: {fileID: 0}
+    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -865
+      objectReference: {fileID: 0}
+    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4452971281049860955, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4452971281049860955, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4452971281049860955, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 809.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 4452971281049860955, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 404.735
+      objectReference: {fileID: 0}
+    - target: {fileID: 4452971281049860955, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -325
+      objectReference: {fileID: 0}
+    - target: {fileID: 5040812392767692570, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5040812392767692570, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5040812392767692570, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 809.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 5040812392767692570, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 404.735
+      objectReference: {fileID: 0}
+    - target: {fileID: 5040812392767692570, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5448836074641759152, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
+      propertyPath: m_text
+      value: "Cr\xE9er le prompt"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6408903361557365109, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
+      propertyPath: m_Name
+      value: "Cr\xE9er le prompt"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7362264659747928859, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
+      propertyPath: m_text
+      value: "Dans le mini-jeu Cr\xE9er le prompt, vous devez r\xE9diger un prompt
+        en d\xE9crivant un probl\xE8me r\xE9ellement li\xE9 \xE0 votre m\xE9tier
+        chez Orange : gestion d\u2019incident, intervention terrain, relation client,
+        analyse r\xE9seau, organisation de planning, ou toute autre situation que
+        vous rencontrez au quotidien.\nVotre objectif est de formuler une demande
+        claire, pr\xE9cise et bien contextualis\xE9e afin d\u2019obtenir de l\u2019IA
+        une r\xE9ponse utile et applicable \xE0 votre activit\xE9.\nUne fois votre
+        prompt valid\xE9, le jeu vous indique comment l\u2019am\xE9liorer : quelles
+        informations ajouter, comment mieux cadrer votre demande et comment guider
+        l\u2019IA pour obtenir un r\xE9sultat plus fiable.\nCe mini-jeu vous permet
+        ainsi de progresser dans la cr\xE9ation de prompts efficaces et adapt\xE9s
+        \xE0 votre poste."
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254053629371839633, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1325.74
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
+--- !u!224 &398589406 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
+  m_PrefabInstance: {fileID: 398589405}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &410026903
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 363054553}
+    m_Modifications:
+    - target: {fileID: 1428791942008493331, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1428791942008493331, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1428791942008493331, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.68912566
       objectReference: {fileID: 0}
     - target: {fileID: 3448839659377157320, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1383,189 +1597,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5448836074641759152, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
       propertyPath: m_text
-      value: "Cr\xE9er le prompt"
+      value: Deviner le prompt
       objectReference: {fileID: 0}
     - target: {fileID: 6408903361557365109, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
       propertyPath: m_Name
-      value: "Cr\xE9er le prompt"
+      value: Deviner le prompt
       objectReference: {fileID: 0}
-    - target: {fileID: 8254053629371839633, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 1203.95
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
---- !u!224 &398589406 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-  m_PrefabInstance: {fileID: 398589405}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &410026903
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 363054553}
-    m_Modifications:
-    - target: {fileID: 1428791942008493331, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1428791942008493331, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1428791942008493331, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0.6262303
-      objectReference: {fileID: 0}
-    - target: {fileID: 3448839659377157320, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3448839659377157320, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3448839659377157320, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: -17
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_Pivot.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_Pivot.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 809.47
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 550
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 404.735
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -2045
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4452971281049860955, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4452971281049860955, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4452971281049860955, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 809.47
-      objectReference: {fileID: 0}
-    - target: {fileID: 4452971281049860955, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 404.735
-      objectReference: {fileID: 0}
-    - target: {fileID: 4452971281049860955, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -325
-      objectReference: {fileID: 0}
-    - target: {fileID: 5040812392767692570, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5040812392767692570, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5040812392767692570, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 809.47
-      objectReference: {fileID: 0}
-    - target: {fileID: 5040812392767692570, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 404.735
-      objectReference: {fileID: 0}
-    - target: {fileID: 5040812392767692570, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -50
-      objectReference: {fileID: 0}
-    - target: {fileID: 5448836074641759152, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
+    - target: {fileID: 7362264659747928859, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
       propertyPath: m_text
-      value: Deviner le prompt
-      objectReference: {fileID: 0}
-    - target: {fileID: 6408903361557365109, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_Name
-      value: Deviner le prompt
+      value: "Dans le mini-jeu Devinez le prompt, vous observez un r\xE9sultat g\xE9n\xE9r\xE9
+        par l\u2019IA : un texte, une image, un message, une r\xE9ponse ou une action
+        simul\xE9e. Votre mission est de deviner quel prompt a pu produire ce r\xE9sultat.\nVous
+        devez analyser les indices visibles : le style, le niveau de d\xE9tail, le
+        vocabulaire, l\u2019intention, le contexte ou les informations pr\xE9sentes.
+        En vous appuyant sur ces \xE9l\xE9ments, vous proposez le prompt le plus
+        cr\xE9dible selon vous.\nUne fois votre proposition valid\xE9e, le jeu r\xE9v\xE8le
+        le prompt d\u2019origine et vous explique pourquoi il a conduit \xE0 ce r\xE9sultat.
+        Cela vous permet de mieux comprendre l\u2019impact des mots choisis, le r\xF4le
+        du contexte et la fa\xE7on dont l\u2019IA interpr\xE8te une demande.\nCe
+        mini-jeu vous aide \xE0 d\xE9velopper votre sens critique et \xE0 affiner
+        votre capacit\xE9 \xE0 anticiper la r\xE9ponse de l\u2019IA \xE0 partir d\u2019un
+        prompt donn\xE9."
       objectReference: {fileID: 0}
     - target: {fileID: 8254053629371839633, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 1203.95
+      value: 1447.53
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1831,7 +1887,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -2045
+      value: -1455
       objectReference: {fileID: 0}
     - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1893,6 +1949,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Deviner le prompt
       objectReference: {fileID: 0}
+    - target: {fileID: 7362264659747928859, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
+      propertyPath: m_text
+      value: "Dans le mini-jeu Devinez le prompt, vous observez un r\xE9sultat g\xE9n\xE9r\xE9
+        par l\u2019IA : un texte, une image, un message, une r\xE9ponse ou une action
+        simul\xE9e. Votre mission est de deviner quel prompt a pu produire ce r\xE9sultat.\nVous
+        devez analyser les indices visibles : le style, le niveau de d\xE9tail, le
+        vocabulaire, l\u2019intention, le contexte ou les informations pr\xE9sentes.
+        En vous appuyant sur ces \xE9l\xE9ments, vous proposez le prompt le plus
+        cr\xE9dible selon vous.\nUne fois votre proposition valid\xE9e, le jeu r\xE9v\xE8le
+        le prompt d\u2019origine et vous explique pourquoi il a conduit \xE0 ce r\xE9sultat.
+        Cela vous permet de mieux comprendre l\u2019impact des mots choisis, le r\xF4le
+        du contexte et la fa\xE7on dont l\u2019IA interpr\xE8te une demande.\nCe
+        mini-jeu vous aide \xE0 d\xE9velopper votre sens critique et \xE0 affiner
+        votre capacit\xE9 \xE0 anticiper la r\xE9ponse de l\u2019IA \xE0 partir d\u2019un
+        prompt donn\xE9."
+      objectReference: {fileID: 0}
     - target: {fileID: 8254053629371839633, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
@@ -1907,13 +1979,13 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
   m_PrefabInstance: {fileID: 603888552}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &820324154
+--- !u!1001 &1140469848
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 363054553}
+    m_TransformParent: {fileID: 1720991431}
     m_Modifications:
     - target: {fileID: 1428791942008493331, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1925,7 +1997,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1428791942008493331, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.6262303
+      value: 0.6605669
       objectReference: {fileID: 0}
     - target: {fileID: 3448839659377157320, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2061,189 +2133,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5448836074641759152, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
       propertyPath: m_text
-      value: "Deviner la bonne r\xE9ponse"
+      value: "Cr\xE9er le prompt"
       objectReference: {fileID: 0}
     - target: {fileID: 6408903361557365109, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
       propertyPath: m_Name
-      value: "CARD Deviner la bonne r\xE9ponse"
+      value: "Cr\xE9er le prompt"
       objectReference: {fileID: 0}
-    - target: {fileID: 8254053629371839633, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 1203.95
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
---- !u!224 &820324155 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-  m_PrefabInstance: {fileID: 820324154}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &1140469848
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1720991431}
-    m_Modifications:
-    - target: {fileID: 1428791942008493331, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1428791942008493331, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1428791942008493331, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0.6262303
-      objectReference: {fileID: 0}
-    - target: {fileID: 3448839659377157320, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3448839659377157320, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3448839659377157320, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: -17
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_Pivot.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_Pivot.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 809.47
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 550
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 404.735
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -1455
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4452971281049860955, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4452971281049860955, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4452971281049860955, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 809.47
-      objectReference: {fileID: 0}
-    - target: {fileID: 4452971281049860955, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 404.735
-      objectReference: {fileID: 0}
-    - target: {fileID: 4452971281049860955, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -325
-      objectReference: {fileID: 0}
-    - target: {fileID: 5040812392767692570, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5040812392767692570, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5040812392767692570, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 809.47
-      objectReference: {fileID: 0}
-    - target: {fileID: 5040812392767692570, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 404.735
-      objectReference: {fileID: 0}
-    - target: {fileID: 5040812392767692570, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -50
-      objectReference: {fileID: 0}
-    - target: {fileID: 5448836074641759152, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
+    - target: {fileID: 7362264659747928859, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
       propertyPath: m_text
-      value: "Cr\xE9er le prompt"
-      objectReference: {fileID: 0}
-    - target: {fileID: 6408903361557365109, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_Name
-      value: "Cr\xE9er le prompt"
+      value: "Dans le mini-jeu Cr\xE9er le prompt, vous devez r\xE9diger un prompt
+        en d\xE9crivant un probl\xE8me r\xE9ellement li\xE9 \xE0 votre m\xE9tier
+        chez Orange : gestion d\u2019incident, intervention terrain, relation client,
+        analyse r\xE9seau, organisation de planning, ou toute autre situation que
+        vous rencontrez au quotidien.\nVotre objectif est de formuler une demande
+        claire, pr\xE9cise et bien contextualis\xE9e afin d\u2019obtenir de l\u2019IA
+        une r\xE9ponse utile et applicable \xE0 votre activit\xE9.\nUne fois votre
+        prompt valid\xE9, le jeu vous indique comment l\u2019am\xE9liorer : quelles
+        informations ajouter, comment mieux cadrer votre demande et comment guider
+        l\u2019IA pour obtenir un r\xE9sultat plus fiable.\nCe mini-jeu vous permet
+        ainsi de progresser dans la cr\xE9ation de prompts efficaces et adapt\xE9s
+        \xE0 votre poste."
       objectReference: {fileID: 0}
     - target: {fileID: 8254053629371839633, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 1203.95
+      value: 1325.74
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2543,7 +2456,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1428791942008493331, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.6262303
+      value: 0.46337217
       objectReference: {fileID: 0}
     - target: {fileID: 3448839659377157320, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2681,9 +2594,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Card VRAI FAUX
       objectReference: {fileID: 0}
+    - target: {fileID: 7362264659747928859, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
+      propertyPath: m_text
+      value: "Le mode Vrai ou Faux propose une s\xE9rie de questions directement
+        adapt\xE9es au poste de travail de chaque collaborateur Orange. L\u2019utilisateur
+        doit d\xE9terminer si une affirmation est correcte ou non, puis d\xE9couvre
+        une explication claire pour comprendre la bonne r\xE9ponse.\nCe format permet
+        d\u2019apprendre rapidement les notions cl\xE9s li\xE9es \xE0 l\u2019utilisation
+        de l\u2019IA dans son activit\xE9 quotidienne, de renforcer ses r\xE9flexes
+        m\xE9tiers et de mieux saisir comment l\u2019IA peut l\u2019accompagner dans
+        ses missions."
+      objectReference: {fileID: 0}
     - target: {fileID: 8254053629371839633, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 1203.95
+      value: 838.57
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2850,7 +2774,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1428791942008493331, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.6262303
+      value: 0.68912566
       objectReference: {fileID: 0}
     - target: {fileID: 3448839659377157320, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2930,7 +2854,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -2045
+      value: -1455
       objectReference: {fileID: 0}
     - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2992,9 +2916,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: Deviner le prompt
       objectReference: {fileID: 0}
+    - target: {fileID: 7362264659747928859, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
+      propertyPath: m_text
+      value: "Dans le mini-jeu Devinez le prompt, vous observez un r\xE9sultat g\xE9n\xE9r\xE9
+        par l\u2019IA : un texte, une image, un message, une r\xE9ponse ou une action
+        simul\xE9e. Votre mission est de deviner quel prompt a pu produire ce r\xE9sultat.\nVous
+        devez analyser les indices visibles : le style, le niveau de d\xE9tail, le
+        vocabulaire, l\u2019intention, le contexte ou les informations pr\xE9sentes.
+        En vous appuyant sur ces \xE9l\xE9ments, vous proposez le prompt le plus
+        cr\xE9dible selon vous.\nUne fois votre proposition valid\xE9e, le jeu r\xE9v\xE8le
+        le prompt d\u2019origine et vous explique pourquoi il a conduit \xE0 ce r\xE9sultat.
+        Cela vous permet de mieux comprendre l\u2019impact des mots choisis, le r\xF4le
+        du contexte et la fa\xE7on dont l\u2019IA interpr\xE8te une demande.\nCe
+        mini-jeu vous aide \xE0 d\xE9velopper votre sens critique et \xE0 affiner
+        votre capacit\xE9 \xE0 anticiper la r\xE9ponse de l\u2019IA \xE0 partir d\u2019un
+        prompt donn\xE9."
+      objectReference: {fileID: 0}
     - target: {fileID: 8254053629371839633, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 1203.95
+      value: 1447.53
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3227,7 +3167,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1722992371}
-  - {fileID: 1705460166}
   - {fileID: 269998788}
   - {fileID: 603888553}
   m_Father: {fileID: 519843744}
@@ -3350,180 +3289,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1705460165
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1453104860}
-    m_Modifications:
-    - target: {fileID: 1428791942008493331, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1428791942008493331, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1428791942008493331, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3448839659377157320, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3448839659377157320, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3448839659377157320, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_Pivot.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_Pivot.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 809.47
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 404.735
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -865
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4452971281049860955, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4452971281049860955, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4452971281049860955, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4452971281049860955, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4452971281049860955, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5040812392767692570, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5040812392767692570, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5040812392767692570, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5040812392767692570, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5040812392767692570, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5448836074641759152, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_text
-      value: "Deviner la bonne r\xE9ponse"
-      objectReference: {fileID: 0}
-    - target: {fileID: 6408903361557365109, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_Name
-      value: "CARD Deviner la bonne r\xE9ponse"
-      objectReference: {fileID: 0}
-    - target: {fileID: 8254053629371839633, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
---- !u!224 &1705460166 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-  m_PrefabInstance: {fileID: 1705460165}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1719529769
 GameObject:
   m_ObjectHideFlags: 0
@@ -3657,7 +3422,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1203638616}
-  - {fileID: 1917016006}
   - {fileID: 1140469849}
   - {fileID: 1257073883}
   m_Father: {fileID: 551864006}
@@ -3705,180 +3469,6 @@ CanvasRenderer:
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
   m_PrefabInstance: {fileID: 6940680070402311876}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &1917016005
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1720991431}
-    m_Modifications:
-    - target: {fileID: 1428791942008493331, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1428791942008493331, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1428791942008493331, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0.6262303
-      objectReference: {fileID: 0}
-    - target: {fileID: 3448839659377157320, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3448839659377157320, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3448839659377157320, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: -17
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_Pivot.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_Pivot.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 809.47
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 550
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 404.735
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -865
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4452971281049860955, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4452971281049860955, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4452971281049860955, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 809.47
-      objectReference: {fileID: 0}
-    - target: {fileID: 4452971281049860955, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 404.735
-      objectReference: {fileID: 0}
-    - target: {fileID: 4452971281049860955, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -325
-      objectReference: {fileID: 0}
-    - target: {fileID: 5040812392767692570, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5040812392767692570, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5040812392767692570, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 809.47
-      objectReference: {fileID: 0}
-    - target: {fileID: 5040812392767692570, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 404.735
-      objectReference: {fileID: 0}
-    - target: {fileID: 5040812392767692570, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -50
-      objectReference: {fileID: 0}
-    - target: {fileID: 5448836074641759152, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_text
-      value: "Deviner la bonne r\xE9ponse"
-      objectReference: {fileID: 0}
-    - target: {fileID: 6408903361557365109, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_Name
-      value: "CARD Deviner la bonne r\xE9ponse"
-      objectReference: {fileID: 0}
-    - target: {fileID: 8254053629371839633, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 1203.95
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
---- !u!224 &1917016006 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 4049452567076924099, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
-  m_PrefabInstance: {fileID: 1917016005}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1984335326
 PrefabInstance:
@@ -4536,6 +4126,17 @@ PrefabInstance:
     - target: {fileID: 6408903361557365109, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
       propertyPath: m_Name
       value: Card VRAI FAUX
+      objectReference: {fileID: 0}
+    - target: {fileID: 7362264659747928859, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
+      propertyPath: m_text
+      value: "Le mode Vrai ou Faux propose une s\xE9rie de questions directement
+        adapt\xE9es au poste de travail de chaque collaborateur Orange. L\u2019utilisateur
+        doit d\xE9terminer si une affirmation est correcte ou non, puis d\xE9couvre
+        une explication claire pour comprendre la bonne r\xE9ponse.\nCe format permet
+        d\u2019apprendre rapidement les notions cl\xE9s li\xE9es \xE0 l\u2019utilisation
+        de l\u2019IA dans son activit\xE9 quotidienne, de renforcer ses r\xE9flexes
+        m\xE9tiers et de mieux saisir comment l\u2019IA peut l\u2019accompagner dans
+        ses missions."
       objectReference: {fileID: 0}
     - target: {fileID: 8254053629371839633, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
       propertyPath: m_SizeDelta.y
