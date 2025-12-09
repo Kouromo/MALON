@@ -59,6 +59,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Daylia/Scenes/Mobile Profile.unity
     guid: 1cc598a297438e240b8e1afc37af7778
+  - enabled: 1
+    path: Assets/Daylia/Scenes/Profil.unity
+    guid: c31c583cf39c6c64aa958b3b5d39749d
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
