@@ -815,10 +815,46 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1747104706}
     m_Modifications:
+    - target: {fileID: 795662942707361631, guid: 9f0c4098b0ab9f5409efe31c884ab122, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 795662942707361631, guid: 9f0c4098b0ab9f5409efe31c884ab122, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1318277261322121069, guid: 9f0c4098b0ab9f5409efe31c884ab122, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1318277261322121069, guid: 9f0c4098b0ab9f5409efe31c884ab122, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1318277261322121069, guid: 9f0c4098b0ab9f5409efe31c884ab122, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1318277261322121069, guid: 9f0c4098b0ab9f5409efe31c884ab122, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1318277261322121069, guid: 9f0c4098b0ab9f5409efe31c884ab122, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2828542059223841926, guid: 9f0c4098b0ab9f5409efe31c884ab122, type: 3}
       propertyPath: m_text
       value: "S\xE9lectionne ton mini-jeux et pars \xE0 la d\xE9couverte du d\xE9fi
         du jour !"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5113073292033913401, guid: 9f0c4098b0ab9f5409efe31c884ab122, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5113073292033913401, guid: 9f0c4098b0ab9f5409efe31c884ab122, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7112270854771847985, guid: 9f0c4098b0ab9f5409efe31c884ab122, type: 3}
       propertyPath: m_Color.b
@@ -831,6 +867,10 @@ PrefabInstance:
     - target: {fileID: 7112270854771847985, guid: 9f0c4098b0ab9f5409efe31c884ab122, type: 3}
       propertyPath: m_Color.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7256637693049956836, guid: 9f0c4098b0ab9f5409efe31c884ab122, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7427235360834772226, guid: 9f0c4098b0ab9f5409efe31c884ab122, type: 3}
       propertyPath: m_Pivot.x

@@ -7,21 +7,7 @@ using System.Collections;
 using System.Text;
 
 [System.Serializable]
-public class ChatRequest 
-{
-    public string message;
-    public string metier;
-}
-
-[System.Serializable]
-public class ChatResponse 
-{
-    public string content;
-    public string status;
-}
-
-[System.Serializable]
-public class VraiFauxUISet
+public class MobileVraiFauxUISet
 {
     public TextMeshProUGUI questionText;
     public Button vraiButton;
@@ -31,18 +17,21 @@ public class VraiFauxUISet
     public Button nextButton;
 }
 
-public class VraiFauxGame : MonoBehaviour
+public class MobileVraiFauxGame : MonoBehaviour
 {
     [Header("UI Light")]
-    public VraiFauxUISet lightUI;
+    public MobileVraiFauxUISet lightUI;
 
     [Header("UI Dark")]
-    public VraiFauxUISet darkUI;
+    public MobileVraiFauxUISet darkUI;
 
     [Header("UI Blue")]
-    public VraiFauxUISet blueUI;
+    public MobileVraiFauxUISet blueUI;
 
-    private VraiFauxUISet ui;
+    [Header("Mobile")]
+    public GameObject feedbackPanel; // parent contenant feedbackText + nextButton
+
+    private MobileVraiFauxUISet ui;
 
     private string apiURL = "http://localhost:5001/api/rag/chat";
     private int score = 0;
@@ -74,32 +63,9 @@ public class VraiFauxGame : MonoBehaviour
 
     void Start() 
     {
-        // ---------- VERSION TEST (globale) ----------
-        // Reset global pour tes tests (à retirer plus tard)
         PlayerPrefs.DeleteKey(VFCountKey);
         PlayerPrefs.Save();
         questionCount = PlayerPrefs.GetInt(VFCountKey, 0);
-
-        // ---------- VERSION FUTURE (par user + date) ----------
-        // string email = PlayerPrefs.GetString("User_Email", "unknown");
-        // string today = System.DateTime.UtcNow.ToString("yyyyMMdd");
-        //
-        // vfCountKeyPerUser = $"VF_QuestionsDone_{email}";
-        // vfDateKeyPerUser  = $"VF_LastDate_{email}";
-        //
-        // string lastDate = PlayerPrefs.GetString(vfDateKeyPerUser, "");
-        // if (lastDate != today)
-        // {
-        //     // Nouveau jour → reset du compteur pour cet utilisateur
-        //     questionCount = 0;
-        //     PlayerPrefs.SetInt(vfCountKeyPerUser, 0);
-        //     PlayerPrefs.SetString(vfDateKeyPerUser, today);
-        //     PlayerPrefs.Save();
-        // }
-        // else
-        // {
-        //     questionCount = PlayerPrefs.GetInt(vfCountKeyPerUser, 0);
-        // }
 
         string firstName = PlayerPrefs.GetString("User_FirstName", "");
         string lastName  = PlayerPrefs.GetString("User_LastName", "");
@@ -110,6 +76,9 @@ public class VraiFauxGame : MonoBehaviour
         ui.nextButton.onClick.AddListener(OnNextButtonClicked);
             
         ui.scoreText.text = "Score: 0";
+
+        // Au début aucun feedback affiché
+        if (feedbackPanel != null) feedbackPanel.SetActive(false);
 
         if (questionCount >= MAX_QUESTIONS)
             EndGame();
@@ -143,6 +112,9 @@ QUESTION: [ta question ici]?
         ui.fauxButton.interactable = false;
         ui.nextButton.interactable = false;
         ui.feedbackText.text = "IA prépare une nouvelle question...";
+
+        // Masquer le panneau de feedback sur mobile pendant la génération
+        if (feedbackPanel != null) feedbackPanel.SetActive(false);
 
         StartCoroutine(CallIA(prompt, response => {
             ui.questionText.text = response;
@@ -179,20 +151,11 @@ Ton: positif, rassurant.
             ui.scoreText.text = $"Score: {score}";
             
             questionCount++;
-
-            // ---------- SAUVEGARDE ACTUELLE (globale) ----------
             PlayerPrefs.SetInt(VFCountKey, questionCount);
             PlayerPrefs.Save();
 
-            // ---------- SAUVEGARDE FUTURE (par user + date) ----------
-            // string email = PlayerPrefs.GetString("User_Email", "unknown");
-            // string today = System.DateTime.UtcNow.ToString("yyyyMMdd");
-            // vfCountKeyPerUser = $"VF_QuestionsDone_{email}";
-            // vfDateKeyPerUser  = $"VF_LastDate_{email}";
-            //
-            // PlayerPrefs.SetInt(vfCountKeyPerUser, questionCount);
-            // PlayerPrefs.SetString(vfDateKeyPerUser, today);
-            // PlayerPrefs.Save();
+            // Afficher le panneau de feedback sur mobile
+            if (feedbackPanel != null) feedbackPanel.SetActive(true);
 
             if (questionCount >= MAX_QUESTIONS)
             {
@@ -212,12 +175,15 @@ Ton: positif, rassurant.
 
     void OnNextButtonClicked()
     {
+        // Cacher le panneau de feedback et passer à la question suivante
+        if (feedbackPanel != null) feedbackPanel.SetActive(false);
+
         if (questionCount < MAX_QUESTIONS)
             GenerateQuestion();
         else
             EndGame();
     }
-    
+
     void EndGame()
     {
         ui.questionText.text = "C'est tout pour aujourd'hui !";
@@ -227,6 +193,9 @@ Ton: positif, rassurant.
         ui.vraiButton.interactable = false;
         ui.fauxButton.interactable = false;
         ui.nextButton.interactable = false;
+
+        // Tu peux laisser le panneau feedback affiché à la fin, ou le cacher
+        if (feedbackPanel != null) feedbackPanel.SetActive(true);
     }
     
     IEnumerator CallIA(string prompt, System.Action<string> callback)

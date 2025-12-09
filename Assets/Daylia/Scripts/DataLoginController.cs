@@ -30,7 +30,7 @@ public class DataLoginController : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Email ou mot de passe incorrect.");
+            Debug.LogWarning("Email ou mot de passe incorrect.");
             // Afficher un message d'erreur à l'utilisateur
             if (errorMessageText != null) 
             {

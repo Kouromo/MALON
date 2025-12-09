@@ -437,10 +437,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1752424315}
     m_Modifications:
+    - target: {fileID: 1318277261322121069, guid: 9f0c4098b0ab9f5409efe31c884ab122, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 350
+      objectReference: {fileID: 0}
     - target: {fileID: 2828542059223841926, guid: 9f0c4098b0ab9f5409efe31c884ab122, type: 3}
       propertyPath: m_text
-      value: "Bienvenue sur DayLIA ! Inscris-toi pour d\xE9couvrir tes d\xE9fis du
-        jour et commencer ton aventure."
+      value: "Bienvenue sur DayLIA, je suis Malon ton assistant IA ! \nInscris-toi
+        pour d\xE9couvrir tes d\xE9fis du jour et commencer ton apprentissage."
       objectReference: {fileID: 0}
     - target: {fileID: 7112270854771847985, guid: 9f0c4098b0ab9f5409efe31c884ab122, type: 3}
       propertyPath: m_Color.b
@@ -1464,10 +1468,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1819987585}
     m_Modifications:
+    - target: {fileID: 1318277261322121069, guid: 9f0c4098b0ab9f5409efe31c884ab122, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 350
+      objectReference: {fileID: 0}
     - target: {fileID: 2828542059223841926, guid: 9f0c4098b0ab9f5409efe31c884ab122, type: 3}
       propertyPath: m_text
-      value: "Bienvenue sur DayLIA ! Inscris-toi pour d\xE9couvrir tes d\xE9fis du
-        jour et commencer ton aventure."
+      value: "Bienvenue sur DayLIA, je suis Malon ton assistant IA ! \nInscris-toi
+        pour d\xE9couvrir tes d\xE9fis du jour et commencer ton apprentissage."
       objectReference: {fileID: 0}
     - target: {fileID: 7427235360834772226, guid: 9f0c4098b0ab9f5409efe31c884ab122, type: 3}
       propertyPath: m_Pivot.x
@@ -5769,10 +5777,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 19297327}
     m_Modifications:
+    - target: {fileID: 1318277261322121069, guid: 9f0c4098b0ab9f5409efe31c884ab122, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 350
+      objectReference: {fileID: 0}
     - target: {fileID: 2828542059223841926, guid: 9f0c4098b0ab9f5409efe31c884ab122, type: 3}
       propertyPath: m_text
-      value: "Bienvenue sur DayLIA ! Inscris-toi pour d\xE9couvrir tes d\xE9fis du
-        jour et commencer ton aventure."
+      value: "Bienvenue sur DayLIA, je suis Malon ton assistant IA ! \nInscris-toi
+        pour d\xE9couvrir tes d\xE9fis du jour et commencer ton apprentissage."
       objectReference: {fileID: 0}
     - target: {fileID: 7427235360834772226, guid: 9f0c4098b0ab9f5409efe31c884ab122, type: 3}
       propertyPath: m_Pivot.x

@@ -18,6 +18,17 @@ public class UISyncManager : MonoBehaviour
     public SynchronizedTextInput[] lightTextInputs;
 
     [System.Serializable]
+    public class SynchronizedSimpleText
+    {
+        public TextMeshProUGUI simpleText;
+    }
+
+    [Header("C. Synchronisation du Texte Simple")]
+    public SynchronizedSimpleText[] darkSimpleTexts;
+    public SynchronizedSimpleText[] blueSimpleTexts;
+    public SynchronizedSimpleText[] lightSimpleTexts;
+
+    [System.Serializable]
     public class SynchronizedButtonSelection
     {
         [Tooltip("La liste des 4 boutons dans ce thème. Le premier est l'index 0, etc.")]
@@ -86,7 +97,61 @@ public class UISyncManager : MonoBehaviour
         }
 
         Debug.Log($"Synchronisation de {activeElements.Length} éléments effectuée.");
-    }    
+    }
+
+    public void SyncAllSimpleTexts()
+    {
+        // 1. Déterminer quel ensemble d'éléments est actuellement visible
+        int currentMode = PlayerPrefs.GetInt(ThemeKey, 0); 
+
+        // Vérification de sécurité: assurez-vous que les listes ont la même taille.
+        if (darkSimpleTexts.Length != blueSimpleTexts.Length || darkSimpleTexts.Length != lightSimpleTexts.Length)
+        {
+            Debug.LogError("Les listes d'éléments de thème DOIVENT avoir la même taille pour la synchronisation!");
+            return;
+        }
+
+        // 2. Parcourir et synchroniser les valeurs
+        for (int i = 0; i < darkSimpleTexts.Length; i++)
+        {
+            string valueToSync = "";
+            
+            // Récupérer la valeur du thème ACTIF
+            switch (currentMode)
+            {
+                case 0: 
+                    if (darkSimpleTexts[i].simpleText != null)
+                        valueToSync = darkSimpleTexts[i].simpleText.text;
+                    break;
+                case 1: 
+                    if (blueSimpleTexts[i].simpleText != null)
+                        valueToSync = blueSimpleTexts[i].simpleText.text;
+                    break;
+                case 2: 
+                    if (lightSimpleTexts[i].simpleText != null)
+                        valueToSync = lightSimpleTexts[i].simpleText.text;
+                    break;
+            }
+
+            // Écrire cette valeur dans TOUS les thèmes (y compris l'actif, pour la cohérence)
+            if (darkSimpleTexts[i].simpleText != null)
+            {
+                darkSimpleTexts[i].simpleText.text = valueToSync;
+            }
+            
+            if (blueSimpleTexts[i].simpleText != null)
+            {
+                blueSimpleTexts[i].simpleText.text = valueToSync;
+            }
+            
+            if (lightSimpleTexts[i].simpleText != null)
+            {
+                lightSimpleTexts[i].simpleText.text = valueToSync;
+            }
+        }
+
+        Debug.Log($"Synchronisation de {darkSimpleTexts.Length} éléments effectuée.");
+    }
     
     // Fonction appelée par les 4 boutons de sélection
     public void SelectAndSyncButton(int listIndex, int selectedIndex)

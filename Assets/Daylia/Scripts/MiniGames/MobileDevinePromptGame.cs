@@ -1,13 +1,12 @@
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using TMPro;
 using System.Collections;
 using System.Text;
 
 [System.Serializable]
-public class DevinePromptUISet
+public class MobileDevinePromptUISet
 {
     public TextMeshProUGUI generatedText;   // Texte généré par IA
     public TMP_InputField userPromptInput;  // Prompt deviné par utilisateur
@@ -16,18 +15,21 @@ public class DevinePromptUISet
     public Button nextButton;               // Bouton "Suivant"
 }
 
-public class DevinePromptGame : MonoBehaviour 
+public class MobileDevinePromptGame : MonoBehaviour 
 {
     [Header("UI Light")]
-    public DevinePromptUISet lightUI;
+    public MobileDevinePromptUISet lightUI;
 
     [Header("UI Dark")]
-    public DevinePromptUISet darkUI;
+    public MobileDevinePromptUISet darkUI;
 
     [Header("UI Blue")]
-    public DevinePromptUISet blueUI;
+    public MobileDevinePromptUISet blueUI;
 
-    private DevinePromptUISet ui;
+    private MobileDevinePromptUISet ui;
+
+    [Header("Mobile")]
+    public GameObject feedbackPanel; // parent contenant feedbackText + nextButton
 
     private string apiURL = "http://localhost:5001/api/rag/chat";
 
@@ -63,7 +65,6 @@ public class DevinePromptGame : MonoBehaviour
         ui.nextButton.onClick.AddListener(OnNextClicked);
 
         // ---------- VERSION TEST (globale) ----------
-        // Reset global pour tes tests (à retirer plus tard)
         PlayerPrefs.DeleteKey(DPCountKey);
         PlayerPrefs.Save();
         exerciseCount = PlayerPrefs.GetInt(DPCountKey, 0);
@@ -87,6 +88,9 @@ public class DevinePromptGame : MonoBehaviour
         // {
         //     exerciseCount = PlayerPrefs.GetInt(dpCountKeyPerUser, 0);
         // }
+
+        // Cacher le panel de feedback au début
+        if (feedbackPanel != null) feedbackPanel.SetActive(false);
 
         if (exerciseCount >= MAX_EXERCISES)
             EndGame();
@@ -123,6 +127,9 @@ PROMPT: [le prompt qui a créé ce texte]
         ui.submitButton.interactable = false;
         ui.nextButton.interactable = false;
         ui.feedbackText.text = "IA génère un nouveau texte...";
+
+        // Pendant la génération, on masque le panel de feedback
+        if (feedbackPanel != null) feedbackPanel.SetActive(false);
 
         StartCoroutine(CallIA(prompt, response => {
             ParseTextAndPrompt(response);
@@ -211,6 +218,9 @@ Format EXACT de ta réponse:
             // PlayerPrefs.SetString(dpDateKeyPerUser, today);
             // PlayerPrefs.Save();
 
+            // Afficher le panneau de feedback sur mobile
+            if (feedbackPanel != null) feedbackPanel.SetActive(true);
+
             if (exerciseCount >= MAX_EXERCISES)
             {
                 EndGame();
@@ -225,6 +235,9 @@ Format EXACT de ta réponse:
 
     void OnNextClicked()
     {
+        // Cacher le panneau de feedback et passer au prochain exercice
+        if (feedbackPanel != null) feedbackPanel.SetActive(false);
+
         if (exerciseCount < MAX_EXERCISES)
             GenerateTextAndRealPrompt();
         else
@@ -238,6 +251,9 @@ Format EXACT de ta réponse:
         ui.submitButton.interactable = false;
         ui.nextButton.interactable = false;
         ui.userPromptInput.interactable = false;
+
+        // On peut laisser le panel affiché à la fin
+        if (feedbackPanel != null) feedbackPanel.SetActive(true);
     }
 
     IEnumerator CallIA(string prompt, System.Action<string> callback)

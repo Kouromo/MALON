@@ -1,13 +1,12 @@
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using TMPro;
 using System.Collections;
 using System.Text;
 
 [System.Serializable]
-public class CreerPromptUISet
+public class MobileCreerPromptUISet
 {
     public TextMeshProUGUI sujetText;
     public TMP_InputField userPromptInput;
@@ -16,18 +15,21 @@ public class CreerPromptUISet
     public TextMeshProUGUI scoreText;
 }
 
-public class CreerPromptGame : MonoBehaviour 
+public class MobileCreerPromptGame : MonoBehaviour 
 {
     [Header("UI Light")]
-    public CreerPromptUISet lightUI;
+    public MobileCreerPromptUISet lightUI;
 
     [Header("UI Dark")]
-    public CreerPromptUISet darkUI;
+    public MobileCreerPromptUISet darkUI;
 
     [Header("UI Blue")]
-    public CreerPromptUISet blueUI;
+    public MobileCreerPromptUISet blueUI;
 
-    private CreerPromptUISet ui;
+    private MobileCreerPromptUISet ui;
+
+    [Header("Mobile")]
+    public GameObject feedbackPanel; // optionnel : parent pour feedback + score
 
     private string apiURL = "http://localhost:5001/api/rag/chat";
 
@@ -62,7 +64,6 @@ public class CreerPromptGame : MonoBehaviour
         ui.submitButton.onClick.AddListener(SubmitAnswer);
 
         // ---------- VERSION TEST (globale) ----------
-        // Reset global pour tes tests (à retirer plus tard)
         PlayerPrefs.DeleteKey(CPCountKey);
         PlayerPrefs.Save();
         exerciseCount = PlayerPrefs.GetInt(CPCountKey, 0);
@@ -86,6 +87,9 @@ public class CreerPromptGame : MonoBehaviour
         // {
         //     exerciseCount = PlayerPrefs.GetInt(cpCountKeyPerUser, 0);
         // }
+
+        // Masquer le panel de feedback au début (si tu en utilises un)
+        if (feedbackPanel != null) feedbackPanel.SetActive(false);
 
         if (exerciseCount >= MAX_EXERCISES)
             EndGame();
@@ -116,6 +120,9 @@ SUJET: [1 phrase précise]
         ui.submitButton.interactable = false;
         ui.feedbackText.text = "IA génère un sujet...";
 
+        // Pendant la génération, on peut masquer le panel
+        if (feedbackPanel != null) feedbackPanel.SetActive(false);
+
         StartCoroutine(CallIA(prompt, response => {
             string line = response.Trim();
             if (line.StartsWith("SUJET:"))
@@ -123,7 +130,7 @@ SUJET: [1 phrase précise]
 
             ui.sujetText.text = line;
             ui.userPromptInput.text = "";
-            ui.feedbackText.text = "Écris le MEILLEUR prompt possible pour ce sujet !";
+            ui.feedbackText.text = "Écris le MEILLEUR prompt possible pour ce sujet :";
             ui.scoreText.text = "";
             ui.submitButton.interactable = true;
         }));
@@ -144,6 +151,8 @@ SUJET: [1 phrase précise]
         {
             ui.feedbackText.text = "Ton prompt est trop court pour être utile. Essaie de décrire précisément ce que tu veux que l'IA fasse.";
             ui.scoreText.text = "Note: 0/10";
+            // Afficher le panel si tu veux que ce message apparaisse dans le bloc dédié
+            if (feedbackPanel != null) feedbackPanel.SetActive(true);
             return;
         }
 
@@ -152,6 +161,7 @@ SUJET: [1 phrase précise]
         {
             ui.feedbackText.text = "Ton prompt est trop vague. Décris la situation, le contexte et ce que tu attends de l'IA.";
             ui.scoreText.text = "Note: 0/10";
+            if (feedbackPanel != null) feedbackPanel.SetActive(true);
             return;
         }
 
@@ -205,6 +215,9 @@ SUCCÈS: [OUI/NON] (OUI uniquement si NOTE >= 5)
             // PlayerPrefs.SetString(cpDateKeyPerUser, today);
             // PlayerPrefs.Save();
 
+            // Afficher le panel de feedback à la fin
+            if (feedbackPanel != null) feedbackPanel.SetActive(true);
+
             EndGame();
         }));
     }
@@ -257,6 +270,7 @@ SUCCÈS: [OUI/NON] (OUI uniquement si NOTE >= 5)
             else
             {
                 ui.feedbackText.text = $"Erreur {req.responseCode}";
+                if (feedbackPanel != null) feedbackPanel.SetActive(true);
             }
         }
     }
