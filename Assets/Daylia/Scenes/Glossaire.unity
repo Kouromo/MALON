@@ -2054,11 +2054,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5448836074641759152, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
       propertyPath: m_text
-      value: "Devine la bonne r\xE9ponse"
+      value: Devinez le prompt
       objectReference: {fileID: 0}
     - target: {fileID: 6408903361557365109, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
       propertyPath: m_Name
       value: "Card Devine la bonne r\xE9ponse"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7362264659747928859, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
+      propertyPath: m_text
+      value: "Dans le mini-jeu Devinez le prompt, vous observez un r\xE9sultat g\xE9n\xE9r\xE9
+        par l\u2019IA : un texte, une image, un message, une r\xE9ponse ou une action
+        simul\xE9e. Votre mission est de deviner quel prompt a pu produire ce r\xE9sultat.\nVous
+        devez analyser les indices visibles : le style, le niveau de d\xE9tail, le
+        vocabulaire, l\u2019intention, le contexte ou les informations pr\xE9sentes.
+        En vous appuyant sur ces \xE9l\xE9ments, vous proposez le prompt le plus
+        cr\xE9dible selon vous.\nUne fois votre proposition valid\xE9e, le jeu r\xE9v\xE8le
+        le prompt d\u2019origine et vous explique pourquoi il a conduit \xE0 ce r\xE9sultat.
+        Cela vous permet de mieux comprendre l\u2019impact des mots choisis, le r\xF4le
+        du contexte et la fa\xE7on dont l\u2019IA interpr\xE8te une demande.\nCe
+        mini-jeu vous aide \xE0 d\xE9velopper votre sens critique et \xE0 affiner
+        votre capacit\xE9 \xE0 anticiper la r\xE9ponse de l\u2019IA \xE0 partir d\u2019un
+        prompt donn\xE9."
       objectReference: {fileID: 0}
     - target: {fileID: 7362264659747928859, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
       propertyPath: m_fontSize
@@ -3664,11 +3680,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5448836074641759152, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
       propertyPath: m_text
-      value: "Devine la bonne r\xE9ponse"
+      value: Devinez le prompt
       objectReference: {fileID: 0}
     - target: {fileID: 6408903361557365109, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
       propertyPath: m_Name
-      value: "Card Devine la bonne r\xE9ponse"
+      value: Card Devine le prompt
+      objectReference: {fileID: 0}
+    - target: {fileID: 7362264659747928859, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
+      propertyPath: m_text
+      value: "Dans le mini-jeu Devinez le prompt, vous observez un r\xE9sultat g\xE9n\xE9r\xE9
+        par l\u2019IA : un texte, une image, un message, une r\xE9ponse ou une action
+        simul\xE9e. Votre mission est de deviner quel prompt a pu produire ce r\xE9sultat.\nVous
+        devez analyser les indices visibles : le style, le niveau de d\xE9tail, le
+        vocabulaire, l\u2019intention, le contexte ou les informations pr\xE9sentes.
+        En vous appuyant sur ces \xE9l\xE9ments, vous proposez le prompt le plus
+        cr\xE9dible selon vous.\nUne fois votre proposition valid\xE9e, le jeu r\xE9v\xE8le
+        le prompt d\u2019origine et vous explique pourquoi il a conduit \xE0 ce r\xE9sultat.
+        Cela vous permet de mieux comprendre l\u2019impact des mots choisis, le r\xF4le
+        du contexte et la fa\xE7on dont l\u2019IA interpr\xE8te une demande.\nCe
+        mini-jeu vous aide \xE0 d\xE9velopper votre sens critique et \xE0 affiner
+        votre capacit\xE9 \xE0 anticiper la r\xE9ponse de l\u2019IA \xE0 partir d\u2019un
+        prompt donn\xE9."
       objectReference: {fileID: 0}
     - target: {fileID: 7362264659747928859, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
       propertyPath: m_fontSize
@@ -4203,11 +4235,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5448836074641759152, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
       propertyPath: m_text
-      value: "Devine la bonne r\xE9ponse"
+      value: Devinez le prompt
       objectReference: {fileID: 0}
     - target: {fileID: 6408903361557365109, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
       propertyPath: m_Name
       value: Card Devine le prompt
+      objectReference: {fileID: 0}
+    - target: {fileID: 7362264659747928859, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
+      propertyPath: m_text
+      value: "Dans le mini-jeu Devinez le prompt, vous observez un r\xE9sultat g\xE9n\xE9r\xE9
+        par l\u2019IA : un texte, une image, un message, une r\xE9ponse ou une action
+        simul\xE9e. Votre mission est de deviner quel prompt a pu produire ce r\xE9sultat.\nVous
+        devez analyser les indices visibles : le style, le niveau de d\xE9tail, le
+        vocabulaire, l\u2019intention, le contexte ou les informations pr\xE9sentes.
+        En vous appuyant sur ces \xE9l\xE9ments, vous proposez le prompt le plus
+        cr\xE9dible selon vous.\nUne fois votre proposition valid\xE9e, le jeu r\xE9v\xE8le
+        le prompt d\u2019origine et vous explique pourquoi il a conduit \xE0 ce r\xE9sultat.
+        Cela vous permet de mieux comprendre l\u2019impact des mots choisis, le r\xF4le
+        du contexte et la fa\xE7on dont l\u2019IA interpr\xE8te une demande.\nCe
+        mini-jeu vous aide \xE0 d\xE9velopper votre sens critique et \xE0 affiner
+        votre capacit\xE9 \xE0 anticiper la r\xE9ponse de l\u2019IA \xE0 partir d\u2019un
+        prompt donn\xE9."
       objectReference: {fileID: 0}
     - target: {fileID: 7362264659747928859, guid: 31a23d4cef3463b4c83028a5d52e1a0f, type: 3}
       propertyPath: m_fontSize
