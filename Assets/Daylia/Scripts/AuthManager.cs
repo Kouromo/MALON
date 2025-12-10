@@ -51,7 +51,7 @@ public class AuthManager : MonoBehaviour
         if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(name))
         {
             // Nous vérifions au moins l'email, le mot de passe et le nom.
-            Debug.LogError("Veuillez remplir au moins l'email, le mot de passe et le nom.");
+            Debug.LogWarning("Veuillez remplir au moins l'email, le mot de passe et le nom.");
             return;
         }
 
@@ -107,7 +107,7 @@ public class AuthManager : MonoBehaviour
         {
             // Échec
             isLoggedIn = false;
-            Debug.LogError("Erreur de connexion. Email ou mot de passe incorrect.");
+            Debug.LogWarning("Erreur de connexion. Email ou mot de passe incorrect.");
         }
     }
 }
