@@ -512,7 +512,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &159667267
 RectTransform:
   m_ObjectHideFlags: 0
@@ -818,7 +818,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &248427612
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5067,6 +5067,10 @@ PrefabInstance:
       value: Mascotte dialogue
       objectReference: {fileID: 0}
     - target: {fileID: 6193710263723829625, guid: de5ef372d391f234f9ff2decb2ace23c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6690480306198552167, guid: de5ef372d391f234f9ff2decb2ace23c, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}

@@ -167,10 +167,10 @@ public class MobileVraiFauxGame : MonoBehaviour
 
         StartCoroutine(CallIA(prompt, response => {
             ui.feedbackText.text = response;
+            questionCount++;
             ui.scoreText.text = $"Progression : {questionCount}/{MAX_QUESTIONS}";
 
             
-            questionCount++;
             PlayerPrefs.SetInt(VFCountKey, questionCount);
             PlayerPrefs.Save();
 
@@ -212,7 +212,6 @@ public class MobileVraiFauxGame : MonoBehaviour
         ui.vraiButton.interactable = false;
         ui.fauxButton.interactable = false;
         ui.nextButton.interactable = false;
-
         ui.scoreText.text = $"Progression : {MAX_QUESTIONS}/{MAX_QUESTIONS}";
     }
     

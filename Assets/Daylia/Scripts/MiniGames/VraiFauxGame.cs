@@ -197,9 +197,9 @@ public class VraiFauxGame : MonoBehaviour
 
         StartCoroutine(CallIA(prompt, response => {
             ui.feedbackText.text = response;
+            questionCount++;
             ui.scoreText.text = $"Progression : {questionCount}/{MAX_QUESTIONS}";
 
-            questionCount++;
 
             // ---------- SAUVEGARDE ACTUELLE (globale) ----------
             PlayerPrefs.SetInt(VFCountKey, questionCount);
