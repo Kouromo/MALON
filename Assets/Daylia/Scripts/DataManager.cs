@@ -7,6 +7,13 @@ public class DataManager : MonoBehaviour
     // Le Singleton
     public static DataManager Instance { get; private set; }
 
+    void Start()
+    {
+        PlayerPrefs.SetInt("IsLoggedIn", 0);
+        PlayerPrefs.Save();
+        // puis charger la scène Connexion, ou afficher l’écran de login
+    }
+
     private void Awake()
     {
         if (Instance == null)

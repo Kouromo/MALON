@@ -248,7 +248,6 @@ public class DevinePromptGame : MonoBehaviour
     void EndGame()
     {
         ui.generatedText.text = "C'est tout pour aujourd'hui !";
-        ui.feedbackText.text = "Tu as terminé tous les exercices de ce mini-jeu.\nReviens demain pour continuer à t'entraîner.";
         ui.submitButton.interactable = false;
         ui.nextButton.interactable = false;
         ui.userPromptInput.interactable = false;

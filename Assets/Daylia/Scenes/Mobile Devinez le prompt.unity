@@ -375,11 +375,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 851276366901826073, guid: 12ab324ed6b592649a3cf60aaa971071, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.406
       objectReference: {fileID: 0}
     - target: {fileID: 851276366901826073, guid: 12ab324ed6b592649a3cf60aaa971071, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1834247170588009499, guid: 12ab324ed6b592649a3cf60aaa971071, type: 3}
       propertyPath: m_Pivot.x
@@ -464,6 +464,10 @@ PrefabInstance:
     - target: {fileID: 2392412773943529928, guid: 12ab324ed6b592649a3cf60aaa971071, type: 3}
       propertyPath: m_Name
       value: Header mobile
+      objectReference: {fileID: 0}
+    - target: {fileID: 5506782747068044401, guid: 12ab324ed6b592649a3cf60aaa971071, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6115675019465081636, guid: 12ab324ed6b592649a3cf60aaa971071, type: 3}
       propertyPath: m_Sprite
@@ -579,6 +583,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 777957549}
     m_Modifications:
     - target: {fileID: 2291772341665480737, guid: 59bfa496bbd9dec4b95cea23e0333a9d, type: 3}
+      propertyPath: m_fontSize
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2291772341665480737, guid: 59bfa496bbd9dec4b95cea23e0333a9d, type: 3}
       propertyPath: m_fontColor.b
       value: 0.6666667
       objectReference: {fileID: 0}
@@ -589,6 +597,10 @@ PrefabInstance:
     - target: {fileID: 2291772341665480737, guid: 59bfa496bbd9dec4b95cea23e0333a9d, type: 3}
       propertyPath: m_fontColor.r
       value: 0.22352941
+      objectReference: {fileID: 0}
+    - target: {fileID: 2291772341665480737, guid: 59bfa496bbd9dec4b95cea23e0333a9d, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 2291772341665480737, guid: 59bfa496bbd9dec4b95cea23e0333a9d, type: 3}
       propertyPath: m_fontColor32.rgba
@@ -1890,6 +1902,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Header mobile
       objectReference: {fileID: 0}
+    - target: {fileID: 5506782747068044401, guid: 12ab324ed6b592649a3cf60aaa971071, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6115675019465081636, guid: 12ab324ed6b592649a3cf60aaa971071, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -2185,6 +2201,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 868372039}
     m_Modifications:
+    - target: {fileID: 2291772341665480737, guid: 59bfa496bbd9dec4b95cea23e0333a9d, type: 3}
+      propertyPath: m_fontSize
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2291772341665480737, guid: 59bfa496bbd9dec4b95cea23e0333a9d, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 2838690123775182980, guid: 59bfa496bbd9dec4b95cea23e0333a9d, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2700,6 +2724,10 @@ PrefabInstance:
     - target: {fileID: 4085027291256327090, guid: 67dc797f8fd79204bb425f3a31de6704, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4278190080
+      objectReference: {fileID: 0}
+    - target: {fileID: 4085027291256327090, guid: 67dc797f8fd79204bb425f3a31de6704, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4678144197024449703, guid: 67dc797f8fd79204bb425f3a31de6704, type: 3}
       propertyPath: m_Name
@@ -3743,6 +3771,10 @@ PrefabInstance:
       propertyPath: m_fontColor32.rgba
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 4085027291256327090, guid: 67dc797f8fd79204bb425f3a31de6704, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4678144197024449703, guid: 67dc797f8fd79204bb425f3a31de6704, type: 3}
       propertyPath: m_Name
       value: MainBackground
@@ -4329,6 +4361,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 226926735}
     m_Modifications:
+    - target: {fileID: 2291772341665480737, guid: 59bfa496bbd9dec4b95cea23e0333a9d, type: 3}
+      propertyPath: m_fontSize
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2291772341665480737, guid: 59bfa496bbd9dec4b95cea23e0333a9d, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 2838690123775182980, guid: 59bfa496bbd9dec4b95cea23e0333a9d, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -4554,6 +4594,10 @@ PrefabInstance:
     - target: {fileID: 2392412773943529928, guid: 12ab324ed6b592649a3cf60aaa971071, type: 3}
       propertyPath: m_Name
       value: Header mobile
+      objectReference: {fileID: 0}
+    - target: {fileID: 5506782747068044401, guid: 12ab324ed6b592649a3cf60aaa971071, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6115675019465081636, guid: 12ab324ed6b592649a3cf60aaa971071, type: 3}
       propertyPath: m_Sprite
@@ -4871,6 +4915,10 @@ PrefabInstance:
     - target: {fileID: 4085027291256327090, guid: 67dc797f8fd79204bb425f3a31de6704, type: 3}
       propertyPath: m_text
       value: Chargement de la question...
+      objectReference: {fileID: 0}
+    - target: {fileID: 4085027291256327090, guid: 67dc797f8fd79204bb425f3a31de6704, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4678144197024449703, guid: 67dc797f8fd79204bb425f3a31de6704, type: 3}
       propertyPath: m_Name

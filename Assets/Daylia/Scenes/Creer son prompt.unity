@@ -2743,6 +2743,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 522017952}
     m_Modifications:
+    - target: {fileID: 395135322386678579, guid: 3fc942e97f6f0f5469c8fa4e20d6c01e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 586406082}
+    - target: {fileID: 395135322386678579, guid: 3fc942e97f6f0f5469c8fa4e20d6c01e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Logout
+      objectReference: {fileID: 0}
+    - target: {fileID: 395135322386678579, guid: 3fc942e97f6f0f5469c8fa4e20d6c01e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DataManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 816675472274226426, guid: 3fc942e97f6f0f5469c8fa4e20d6c01e, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -2905,6 +2917,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8704443429274515898, guid: 3fc942e97f6f0f5469c8fa4e20d6c01e, type: 3}
   m_PrefabInstance: {fileID: 586406080}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &586406082 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 415562188285226970, guid: 3fc942e97f6f0f5469c8fa4e20d6c01e, type: 3}
+  m_PrefabInstance: {fileID: 586406080}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5503a684cb932f24692474be68970765, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &594133023
 GameObject:
   m_ObjectHideFlags: 0
@@ -3355,8 +3378,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 14
-  m_fontSizeBase: 14
+  m_fontSize: 25
+  m_fontSizeBase: 25
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3629,8 +3652,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 14
-  m_fontSizeBase: 14
+  m_fontSize: 25
+  m_fontSizeBase: 25
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -5444,6 +5467,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 822187408}
     m_Modifications:
+    - target: {fileID: 395135322386678579, guid: 3fc942e97f6f0f5469c8fa4e20d6c01e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1390945345}
+    - target: {fileID: 395135322386678579, guid: 3fc942e97f6f0f5469c8fa4e20d6c01e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Logout
+      objectReference: {fileID: 0}
+    - target: {fileID: 395135322386678579, guid: 3fc942e97f6f0f5469c8fa4e20d6c01e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DataManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 816675472274226426, guid: 3fc942e97f6f0f5469c8fa4e20d6c01e, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -5668,6 +5703,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 926d775189856564f902214f47a20496, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1390945345 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 415562188285226970, guid: 3fc942e97f6f0f5469c8fa4e20d6c01e, type: 3}
+  m_PrefabInstance: {fileID: 1390945341}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5503a684cb932f24692474be68970765, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1501150348
@@ -6853,8 +6899,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 14
-  m_fontSizeBase: 14
+  m_fontSize: 25
+  m_fontSizeBase: 25
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
