@@ -15,6 +15,9 @@ public class MobileVraiFauxUISet
     public TextMeshProUGUI feedbackText;
     public TextMeshProUGUI scoreText;
     public Button nextButton;
+
+    [Header("Mobile")]
+    public GameObject feedbackPanel;
 }
 
 public class MobileVraiFauxGame : MonoBehaviour
@@ -28,13 +31,9 @@ public class MobileVraiFauxGame : MonoBehaviour
     [Header("UI Blue")]
     public MobileVraiFauxUISet blueUI;
 
-    [Header("Mobile")]
-    public GameObject feedbackPanel; // parent contenant feedbackText + nextButton
-
     private MobileVraiFauxUISet ui;
 
     private string apiURL = "http://localhost:5001/api/rag/chat";
-    private int score = 0;
     private int questionCount = 0;
     private const int MAX_QUESTIONS = 4;
 
@@ -75,10 +74,10 @@ public class MobileVraiFauxGame : MonoBehaviour
         ui.fauxButton.onClick.AddListener(() => SubmitAnswer("FAUX"));
         ui.nextButton.onClick.AddListener(OnNextButtonClicked);
             
-        ui.scoreText.text = "Score: 0";
+        ui.scoreText.text = $"Progression : {questionCount}/{MAX_QUESTIONS}";
 
         // Au début aucun feedback affiché
-        if (feedbackPanel != null) feedbackPanel.SetActive(false);
+        if (ui.feedbackPanel != null) ui.feedbackPanel.SetActive(false);
 
         if (questionCount >= MAX_QUESTIONS)
             EndGame();
@@ -96,17 +95,22 @@ public class MobileVraiFauxGame : MonoBehaviour
         
         string job = CurrentJob;
         string prompt = $@"
-Tu génères une question VRAI/FAUX pédagogique pour un collaborateur Orange au métier: {job}.
-Objectif: lui montrer comment l'IA peut l'aider dans son travail au quotidien, sans le remplacer.
+        Tu conçois une affirmation pour un quiz VRAI/FAUX destiné à un collaborateur Orange dont le métier est : {job}.
 
-Contraintes:
-- Ne PAS utiliser les mots 'serious game', 'Orange Manager', 'Manager', 'Vendeur', 'Technicien' ni parler de 'jeu'.
-- La question doit parler d'une situation métier concrète (client, intervention, réunion, etc.).
-- Une seule question, claire, en français.
+        OBJECTIF PÉDAGOGIQUE :
+        - Illustrer de manière concrète comment l'IA peut aider dans son travail quotidien (sans le remplacer).
+        - Tester sa compréhension d'un bon usage de l'IA dans des situations métier variées.
 
-Format EXACT de ta réponse (rien d'autre):
-QUESTION: [ta question ici]?
-";
+        CONTRAINTES :
+        - Ne PAS utiliser les mots 'serious game', 'jeu', 'Orange Manager', 'Manager', 'Vendeur', 'Technicien'.
+        - La situation doit être réaliste et liée au métier {job} : client, intervention technique, réclamation, vente, analyse de données, préparation de réunion, management d'équipe, etc.
+        - Varier les thématiques d'une question à l'autre (ne pas toujours parler du même type de situation).
+        - L'affirmation doit être clairement VRAIE ou clairement FAUSSE : il ne doit pas y avoir de réponse ambiguë.
+        - Ne pas donner la réponse, uniquement l'affirmation.
+
+        FORMAT EXACT DE TA RÉPONSE (rien d'autre, pas de texte avant ou après) :
+        QUESTION: [une seule affirmation, claire, en français]
+        ";
 
         ui.vraiButton.interactable = false;
         ui.fauxButton.interactable = false;
@@ -114,11 +118,10 @@ QUESTION: [ta question ici]?
         ui.feedbackText.text = "IA prépare une nouvelle question...";
 
         // Masquer le panneau de feedback sur mobile pendant la génération
-        if (feedbackPanel != null) feedbackPanel.SetActive(false);
+        if (ui.feedbackPanel != null) ui.feedbackPanel.SetActive(false);
 
         StartCoroutine(CallIA(prompt, response => {
             ui.questionText.text = response;
-            ui.feedbackText.text = $"Question {questionCount + 1}/{MAX_QUESTIONS}\nRéponds par Vrai ou Faux.";
             ui.vraiButton.interactable = true;
             ui.fauxButton.interactable = true;
             ui.nextButton.interactable = false;
@@ -133,29 +136,46 @@ QUESTION: [ta question ici]?
         
         string question = ui.questionText.text;
         string job = CurrentJob;
-        
-        string prompt = $@"
-Serious game Orange {job}.
-QUESTION: {question}
-RÉPONSE: {userAnswer}
 
-FEEDBACK PÉDAGOGIQUE (2 phrases):
-1. VRAI ou FAUX ? 
-2. Explication simple + utilité IA pour {job}.
-Ton: positif, rassurant.
-";
+        string prompt = $@"
+        Tu joues le rôle d'un formateur qui corrige une réponse à une question de type VRAI/FAUX pour un collaborateur Orange dont le métier est : {job}.
+
+        QUESTION POSÉE AU COLLABORATEUR :
+        {question}
+
+        RÉPONSE DONNÉE PAR LE COLLABORATEUR :
+        {userAnswer}   (il n'a pu répondre que 'VRAI' ou 'FAUX')
+
+        TON RÔLE :
+        1. Déterminer objectivement si l'affirmation de la QUESTION est VRAIE ou FAUSSE dans un contexte métier réaliste pour {job}.
+        2. Comparer ta conclusion à la réponse du collaborateur.
+        3. Dire clairement s'il a BON ou FAUX, sans essayer de lui donner raison quand il a tort.
+        4. Donner un feedback pédagogique court sur le bon usage de l'IA dans cette situation.
+
+        CONTRAINTES IMPORTANTES :
+        - Tu dois choisir UNE seule vérité pour la question : l'affirmation est soit VRAIE, soit FAUSSE (pas de 'ça dépend').
+        - Si la réponse du collaborateur ne correspond pas à la vérité que tu as déterminée, le résultat doit être FAUX.
+        - Ne pas reformuler la question, ne pas inventer un troisième choix.
+        - Ne pas être complaisant : si sa réponse est incorrecte, tu dois dire clairement qu'il s'est trompé.
+
+        FORMAT EXACT DE TA RÉPONSE (rien d'autre, sans texte avant ou après) :
+        1. Vérité: [VRAI ou FAUX]  // ta propre évaluation de l'affirmation de la question
+        2. Résultat: [BON ou FAUX] // BON seulement si la réponse du collaborateur correspond à la Vérité
+        3. Explication: [2 à 3 phrases simples expliquant pourquoi l'affirmation est VRAIE ou FAUSSE]
+        4. Conseil: [1 phrase expliquant comment l'IA peut bien l'aider dans cette situation métier]
+        ";
 
         StartCoroutine(CallIA(prompt, response => {
             ui.feedbackText.text = response;
-            score += 10;
-            ui.scoreText.text = $"Score: {score}";
+            ui.scoreText.text = $"Progression : {questionCount}/{MAX_QUESTIONS}";
+
             
             questionCount++;
             PlayerPrefs.SetInt(VFCountKey, questionCount);
             PlayerPrefs.Save();
 
             // Afficher le panneau de feedback sur mobile
-            if (feedbackPanel != null) feedbackPanel.SetActive(true);
+            if (ui.feedbackPanel != null) ui.feedbackPanel.SetActive(true);
 
             if (questionCount >= MAX_QUESTIONS)
             {
@@ -168,7 +188,7 @@ Ton: positif, rassurant.
             else
             {
                 ui.nextButton.interactable = true;
-                ui.feedbackText.text += "\n\nClique sur 'Suivant' pour passer à la prochaine question.";
+                ui.feedbackText.text += "\n\nClique sur la flêche pour passer à la prochaine question.";
             }
         }));
     }
@@ -176,7 +196,7 @@ Ton: positif, rassurant.
     void OnNextButtonClicked()
     {
         // Cacher le panneau de feedback et passer à la question suivante
-        if (feedbackPanel != null) feedbackPanel.SetActive(false);
+        if (ui.feedbackPanel != null) ui.feedbackPanel.SetActive(false);
 
         if (questionCount < MAX_QUESTIONS)
             GenerateQuestion();
@@ -187,15 +207,13 @@ Ton: positif, rassurant.
     void EndGame()
     {
         ui.questionText.text = "C'est tout pour aujourd'hui !";
-        ui.feedbackText.text = $"Score final: {score}/{MAX_QUESTIONS * 10}\n" +
-                               $"Reviens demain pour de nouveaux défis !";
+        ui.feedbackText.text = $"Tu as répondu aux {MAX_QUESTIONS} questions du jour.\nReviens demain pour de nouveaux défis !";
 
         ui.vraiButton.interactable = false;
         ui.fauxButton.interactable = false;
         ui.nextButton.interactable = false;
 
-        // Tu peux laisser le panneau feedback affiché à la fin, ou le cacher
-        if (feedbackPanel != null) feedbackPanel.SetActive(true);
+        ui.scoreText.text = $"Progression : {MAX_QUESTIONS}/{MAX_QUESTIONS}";
     }
     
     IEnumerator CallIA(string prompt, System.Action<string> callback)

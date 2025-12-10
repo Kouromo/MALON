@@ -13,6 +13,9 @@ public class MobileCreerPromptUISet
     public Button submitButton;
     public TextMeshProUGUI feedbackText;
     public TextMeshProUGUI scoreText;
+
+    [Header("Mobile")]
+    public GameObject feedbackPanel;
 }
 
 public class MobileCreerPromptGame : MonoBehaviour 
@@ -28,8 +31,7 @@ public class MobileCreerPromptGame : MonoBehaviour
 
     private MobileCreerPromptUISet ui;
 
-    [Header("Mobile")]
-    public GameObject feedbackPanel; // optionnel : parent pour feedback + score
+    
 
     private string apiURL = "http://localhost:5001/api/rag/chat";
 
@@ -89,7 +91,7 @@ public class MobileCreerPromptGame : MonoBehaviour
         // }
 
         // Masquer le panel de feedback au début (si tu en utilises un)
-        if (feedbackPanel != null) feedbackPanel.SetActive(false);
+        if (ui.feedbackPanel != null) ui.feedbackPanel.SetActive(false);
 
         if (exerciseCount >= MAX_EXERCISES)
             EndGame();
@@ -107,21 +109,27 @@ public class MobileCreerPromptGame : MonoBehaviour
 
         string job = CurrentJob;
         string prompt = $@"
-Génère 1 SUJET concret pour un collaborateur {job} chez Orange.
+        Tu dois générer 1 SUJET concret pour un collaborateur {job} chez Orange.
 
-Objectif:
-- Le sujet doit décrire une situation métier précise où l'IA pourrait aider (relation client, dépannage, analyse, management d'équipe, etc.).
-- Une seule phrase, claire et spécifique.
+        OBJECTIF :
+        - Proposer une situation métier précise où l'IA pourrait vraiment aider ce collaborateur dans son travail.
+        - Donner envie d'écrire un prompt détaillé et utile pour cette situation.
 
-Format EXACT (rien d'autre):
-SUJET: [1 phrase précise]
-";
+        CONTRAINTES :
+        - Ne parle pas de 'serious game', de 'jeu', ni des coulisses de l'exercice.
+        - Situe toujours le contexte dans la vie professionnelle (client, intervention technique, vente, réclamation, analyse de données, réunion, management d'équipe, etc.).
+        - Varier les types de situations d’un sujet à l’autre (ne pas toujours parler du même type de tâche).
+        - Le sujet doit être formulé comme une situation précise à traiter, pas comme une question de théorie.
+
+        FORMAT EXACT (rien d'autre, pas de texte avant ou après) :
+        SUJET: [1 phrase précise décrivant une situation concrète où l'IA pourrait aider le collaborateur {job}]
+        ";
 
         ui.submitButton.interactable = false;
         ui.feedbackText.text = "IA génère un sujet...";
 
         // Pendant la génération, on peut masquer le panel
-        if (feedbackPanel != null) feedbackPanel.SetActive(false);
+        if (ui.feedbackPanel != null) ui.feedbackPanel.SetActive(false);
 
         StartCoroutine(CallIA(prompt, response => {
             string line = response.Trim();
@@ -152,7 +160,7 @@ SUJET: [1 phrase précise]
             ui.feedbackText.text = "Ton prompt est trop court pour être utile. Essaie de décrire précisément ce que tu veux que l'IA fasse.";
             ui.scoreText.text = "Note: 0/10";
             // Afficher le panel si tu veux que ce message apparaisse dans le bloc dédié
-            if (feedbackPanel != null) feedbackPanel.SetActive(true);
+            if (ui.feedbackPanel != null) ui.feedbackPanel.SetActive(true);
             return;
         }
 
@@ -161,33 +169,43 @@ SUJET: [1 phrase précise]
         {
             ui.feedbackText.text = "Ton prompt est trop vague. Décris la situation, le contexte et ce que tu attends de l'IA.";
             ui.scoreText.text = "Note: 0/10";
-            if (feedbackPanel != null) feedbackPanel.SetActive(true);
+            if (ui.feedbackPanel != null) ui.feedbackPanel.SetActive(true);
             return;
         }
 
         string job = CurrentJob;
         string prompt = $@"
-Tu dois ÉVALUER la qualité d'un prompt écrit par un collaborateur {job} chez Orange.
+        Tu dois ÉVALUER la qualité d'un prompt écrit par un collaborateur {job} chez Orange.
 
-SUJET: {sujet}
-PROMPT UTILISATEUR: {userPrompt}
+        SUJET (situation métier à traiter) :
+        {sujet}
 
-Barème (très strict, à respecter absolument):
-- 0/10 : prompt très court, vide, ou complètement hors sujet.
-- 1-3/10 : très faible, presque inutilisable.
-- 4-5/10 : moyen, des idées mais trop vague ou incomplet.
-- 6-8/10 : bon, utilisable mais améliorable.
-- 9-10/10 : excellent, très clair, très précis, directement exploitable.
+        PROMPT UTILISATEUR :
+        {userPrompt}
 
-IMPORTANT:
-- Si le prompt est très court ou sans sens, tu dois OBLIGATOIREMENT mettre 0/10.
-- Tu dois respecter strictement ce barème.
+        TON RÔLE :
+        - Noter la qualité du prompt sur 10 en te basant sur son utilité réelle pour l'IA dans ce contexte.
+        - Expliquer ce qui est bien et ce qui manque pour que l'IA puisse vraiment aider le collaborateur {job}.
+        - Rester honnête : ne pas sur-noter un prompt vague ou peu exploitable.
 
-Format EXACT (rien d'autre):
-NOTE: [0-10]/10
-FEEDBACK: [2 à 3 phrases avec ce qui va / ne va pas]
-SUCCÈS: [OUI/NON] (OUI uniquement si NOTE >= 5)
-";
+        BARÈME (très strict, à respecter absolument) :
+        - 0/10 : prompt très court, vide, ou complètement hors sujet.
+        - 1-3/10 : très faible, presque inutilisable (trop vague, pas de contexte, pas d'objectif clair).
+        - 4-5/10 : moyen, quelques idées mais trop flou ou incomplet pour être vraiment efficace.
+        - 6-8/10 : bon, utilisable, mais il manque encore des précisions pour être excellent.
+        - 9-10/10 : excellent, très clair, très précis, directement exploitable par l'IA.
+
+        CONTRAINTES IMPORTANTES :
+        - Si le prompt est très court ou semble sans réel sens, tu dois OBLIGATOIREMENT mettre 0/10.
+        - Tu dois respecter strictement le barème ci-dessus.
+        - Ta note doit refléter uniquement la qualité du prompt pour ce SUJET (pas la politesse ou le style).
+
+        FORMAT EXACT (rien d'autre, pas de texte avant ou après) :
+        NOTE: [0-10]/10
+        FEEDBACK: [2 à 3 phrases expliquant clairement ce qui va bien et ce qui ne va pas dans le prompt pour ce sujet]
+        SUCCÈS: [OUI/NON]   // OUI uniquement si NOTE >= 5
+        ";
+
 
         ui.submitButton.interactable = false;
         ui.feedbackText.text = "IA évalue ton prompt...";
@@ -216,7 +234,7 @@ SUCCÈS: [OUI/NON] (OUI uniquement si NOTE >= 5)
             // PlayerPrefs.Save();
 
             // Afficher le panel de feedback à la fin
-            if (feedbackPanel != null) feedbackPanel.SetActive(true);
+            if (ui.feedbackPanel != null) ui.feedbackPanel.SetActive(true);
 
             EndGame();
         }));
@@ -270,7 +288,7 @@ SUCCÈS: [OUI/NON] (OUI uniquement si NOTE >= 5)
             else
             {
                 ui.feedbackText.text = $"Erreur {req.responseCode}";
-                if (feedbackPanel != null) feedbackPanel.SetActive(true);
+                if (ui.feedbackPanel != null) ui.feedbackPanel.SetActive(true);
             }
         }
     }

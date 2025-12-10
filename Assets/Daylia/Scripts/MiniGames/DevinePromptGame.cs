@@ -29,6 +29,8 @@ public class DevinePromptGame : MonoBehaviour
 
     private DevinePromptUISet ui;
 
+    private const string DPCompletedDaysKey = "DP_DaysCompleted";
+
     private string apiURL = "http://localhost:5001/api/rag/chat";
 
     string CurrentJob => PlayerPrefs.GetString("User_Position", "Vendeur");
@@ -104,21 +106,23 @@ public class DevinePromptGame : MonoBehaviour
 
         string job = CurrentJob;
         string prompt = $@"
-Tu joues au mini-jeu 'Devine le prompt' pour un collaborateur {job} chez Orange.
+        Tu joues au mini-jeu 'Devine le prompt' pour un collaborateur {job} chez Orange.
 
-RÔLE:
-- Tu dois d'abord INVENTER un PROMPT RÉEL qui pourrait être utilisé par ce collaborateur dans son métier.
-- Ensuite, tu génères un TEXTE GÉNÉRÉ (2 à 3 phrases) qui est la réponse de l'IA à ce prompt.
-- Le texte doit être réaliste, concret, lié au métier {job}. 
+        RÔLE :
+        - Tu dois d'abord INVENTER un PROMPT RÉEL qu'un collaborateur {job} pourrait effectivement taper pour être aidé par l'IA dans son travail.
+        - Ensuite, tu génères un TEXTE GÉNÉRÉ (2 à 4 phrases) qui est la réponse de l'IA à ce prompt.
+        - Le texte doit être réaliste, concret, crédible, et clairement exploitable dans une situation métier {job}.
 
-Contraintes:
-- Ne parle pas de 'serious game' ni de 'jeu'.
-- Situe toujours le contexte dans la vie professionnelle (client, réunion, intervention, management, etc.).
+        CONTRAINTES :
+        - Ne parle pas de 'serious game', de 'jeu', ni des coulisses du jeu (ne dis pas que c'est un exercice ou un mini-jeu).
+        - Situe toujours le contexte dans la vie professionnelle (client, réunion, intervention, management, analyse, etc.).
+        - Varier les types de situations : relation client, suivi de dossier, préparation de rendez-vous, gestion d'équipe, analyse de données, rédaction d'email, etc.
+        - Le PROMPT RÉEL doit être formulé comme un vrai prompt complet, pas seulement quelques mots-clés.
 
-Format EXACT de ta réponse (rien d'autre):
-TEXTE: [le texte généré]
-PROMPT: [le prompt qui a créé ce texte]
-";
+        FORMAT EXACT DE TA RÉPONSE (rien d'autre, pas de texte avant ou après) :
+        TEXTE: [le texte généré par l'IA pour le collaborateur]
+        PROMPT: [le prompt réel écrit par le collaborateur pour obtenir ce texte]
+        ";
 
         ui.submitButton.interactable = false;
         ui.nextButton.interactable = false;
@@ -166,27 +170,33 @@ PROMPT: [le prompt qui a créé ce texte]
         
         string job = CurrentJob;
         string prompt = $@"
-Mini-jeu 'Devine le prompt' pour un collaborateur {job} chez Orange.
+        Mini-jeu 'Devine le prompt' pour un collaborateur {job} chez Orange.
 
-OBJECTIF:
-Tu dois comparer deux prompts:
-- PROMPT RÉEL: le prompt exact qui a servi à générer le texte.
-- PROMPT UTILISATEUR: ce que l'utilisateur pense être le prompt.
+        TON RÔLE :
+        Tu dois comparer deux prompts :
+        - PROMPT RÉEL : le prompt exact qui a servi à générer le texte.
+        - PROMPT UTILISATEUR : ce que l'utilisateur pense être le prompt.
 
-TEXTE GÉNÉRÉ: {ui.generatedText.text}
-PROMPT RÉEL: {realPrompt}
-PROMPT UTILISATEUR: {userPrompt}
+        TEXTE GÉNÉRÉ (réponse de l'IA au prompt réel) :
+        {ui.generatedText.text}
 
-RÈGLES IMPORTANTES:
-- Si le PROMPT UTILISATEUR est très court (moins de 5 caractères) ou visiblement sans rapport (ex: 'a', 'test', 'ok'), la proximité doit être 0%.
-- Ne sois PAS gentil: si le sens est loin du prompt réel, mets une faible proximité.
-- Ne juge que sur la similarité de sens entre les deux prompts.
+        PROMPT RÉEL :
+        {realPrompt}
 
-Format EXACT de ta réponse:
-1. Proximité: [un nombre entre 0 et 100]%
-2. Explication: [1 à 2 phrases claires expliquant la similarité ou non]
-3. Conseil: [1 phrase pour mieux formuler un prompt la prochaine fois]
-";
+        PROMPT UTILISATEUR :
+        {userPrompt}
+
+        RÈGLES IMPORTANTES :
+        - Si le PROMPT UTILISATEUR est très court (moins de 5 caractères) ou clairement hors sujet (ex : 'a', 'test', 'ok'), la proximité doit être 0%.
+        - Ne sois PAS gentil : si le sens est loin du prompt réel, la proximité doit être faible.
+        - La proximité doit refléter uniquement la similarité de sens entre les deux prompts (pas la qualité d'écriture).
+        - Un score élevé (80% et plus) doit être réservé aux prompts vraiment très proches dans l’intention et les détails.
+
+        FORMAT EXACT DE TA RÉPONSE (rien d'autre, pas de texte avant ou après) :
+        1. Proximité: [un nombre ENTIER entre 0 et 100]%
+        2. Explication: [1 à 2 phrases claires expliquant en quoi les deux prompts se ressemblent ou diffèrent]
+        3. Conseil: [1 phrase pour aider l'utilisateur à écrire un prompt plus précis ou plus proche du prompt réel la prochaine fois]
+        ";
 
         ui.submitButton.interactable = false;
         ui.nextButton.interactable = false;
@@ -213,6 +223,10 @@ Format EXACT de ta réponse:
 
             if (exerciseCount >= MAX_EXERCISES)
             {
+                int completed = PlayerPrefs.GetInt(DPCompletedDaysKey, 0);
+                completed++;
+                PlayerPrefs.SetInt(DPCompletedDaysKey, completed);
+                PlayerPrefs.Save();
                 EndGame();
             }
             else

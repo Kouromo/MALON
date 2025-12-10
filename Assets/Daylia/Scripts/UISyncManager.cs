@@ -23,7 +23,7 @@ public class UISyncManager : MonoBehaviour
         public TextMeshProUGUI simpleText;
     }
 
-    [Header("C. Synchronisation du Texte Simple")]
+    [Header("B. Synchronisation du Texte Simple")]
     public SynchronizedSimpleText[] darkSimpleTexts;
     public SynchronizedSimpleText[] blueSimpleTexts;
     public SynchronizedSimpleText[] lightSimpleTexts;
@@ -35,7 +35,7 @@ public class UISyncManager : MonoBehaviour
         public GameObject[] selectionButtons; 
     }
     
-    [Header("B. Synchronisation des Sélections de Bouton")]
+    [Header("C. Synchronisation des Sélections de Bouton")]
     [Tooltip("Chaque élément contient les 4 boutons de sélection de couleur (ex: B1, B2, B3, B4) pour le thème")]
     public SynchronizedButtonSelection[] darkButtonSets;
     public SynchronizedButtonSelection[] blueButtonSets;
